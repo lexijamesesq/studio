@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "operationId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}$"
+    },
+    "expectedRevision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "articleId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}$"
+    },
+    "preparation": {
+      "type": "object",
+      "properties": {
+        "proposedArgument": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 12000
+        },
+        "supportingEvidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sourceId": {
+                "type": "string",
+                "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}$"
+              },
+              "excerpt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 12000
+              },
+              "interpretation": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 12000
+              }
+            },
+            "required": [
+              "sourceId",
+              "excerpt",
+              "interpretation"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "conflictingEvidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sourceId": {
+                "type": "string",
+                "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}$"
+              },
+              "excerpt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 12000
+              },
+              "interpretation": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 12000
+              }
+            },
+            "required": [
+              "sourceId",
+              "excerpt",
+              "interpretation"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "gaps": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          }
+        },
+        "nextInteraction": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 12000
+        }
+      },
+      "required": [
+        "proposedArgument",
+        "supportingEvidence",
+        "conflictingEvidence",
+        "gaps",
+        "nextInteraction"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "operationId",
+    "expectedRevision",
+    "articleId",
+    "preparation"
+  ],
+  "additionalProperties": false
+}
