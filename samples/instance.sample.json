@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "packageRoot": "/path/to/your/studio",
+  "vaultRoot": "/path/to/your/vault",
+  "recordsPath": "Studio/Publishing",
+  "sources": [
+    {
+      "id": "methodology",
+      "path": "Studio/Knowledge/YOUR_SOURCE.md",
+      "publicUse": "private"
+    }
+  ],
+  "intentPaths": [],
+  "lessonPaths": []
+}

@@ -1,0 +1,163 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}$"
+    },
+    "inputHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "partial"
+      ]
+    },
+    "coverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sourceId": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "read",
+              "unavailable"
+            ]
+          },
+          "detail": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          }
+        },
+        "required": [
+          "sourceId",
+          "status",
+          "detail"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "candidates": {
+      "maxItems": 30,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "topicKey": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}$"
+          },
+          "angleKey": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          },
+          "angle": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          },
+          "reader": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          },
+          "whyWrite": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          },
+          "whyRead": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          },
+          "rankingRationale": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          },
+          "evidence": {
+            "minItems": 1,
+            "maxItems": 30,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sourceId": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}$"
+                },
+                "excerpt": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 12000
+                },
+                "interpretation": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 12000
+                }
+              },
+              "required": [
+                "sourceId",
+                "excerpt",
+                "interpretation"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "gaps": {
+            "maxItems": 30,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 12000
+            }
+          }
+        },
+        "required": [
+          "topicKey",
+          "angleKey",
+          "title",
+          "angle",
+          "reader",
+          "whyWrite",
+          "whyRead",
+          "rankingRationale",
+          "evidence",
+          "gaps"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "runId",
+    "inputHash",
+    "status",
+    "coverage",
+    "candidates"
+  ],
+  "additionalProperties": false
+}
