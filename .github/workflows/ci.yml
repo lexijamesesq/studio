@@ -34,7 +34,7 @@ jobs:
       dotty_ref: v1
       check_name: checks
 
-  studio-tests:
+  test:
     name: ci / test
     needs: [floor]
     if: ${{ needs.floor.outputs.mechanical != 'true' }}
