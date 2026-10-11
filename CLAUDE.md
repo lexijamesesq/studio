@@ -40,7 +40,7 @@ Biome checks the estate style; TypeScript checks strict types; the build emits d
 
 ## CI
 
-`.github/workflows/ci.yml` currently contains the reusable estate CI floor plus Studio checks, typecheck, build, and tests. The official estate seed is present. Enrollment and caller rollout PRs are pending; declared merge rules, Margot, and Ollie integration require their merges and the estate proof PR. Local hook templates are installed through estate mode; no completed enrollment or merge proof is claimed. Do not substitute ad-hoc GitHub setup.
+`.github/workflows/ci.yml` calls Dotty’s shared `estate-pr-ci.yml@v1` workflow for pull request changes, including title and body edits. The required check is `CI / pre-merge checks`. The native pre-push hook runs the root TypeScript check, schema-generating build, and existing behavior suite when project inputs change.
 
 ## Ownership and conventions
 
