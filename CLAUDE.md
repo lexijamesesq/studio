@@ -11,7 +11,7 @@ This repository ships reusable publishing behavior and deterministic Markdown re
 
 ## Setup
 
-Use Node 22+ and npm. From a fresh checkout run `npm ci` and `npm run build`; the build generates `dist/` and the JSON schemas. Tests include the compiled CLI, so build before testing.
+For manual product development, use Node 22+ and npm. `npm ci` prepares dependencies and `npm run build` generates `dist/` and the JSON schemas. Tests include the compiled CLI, so build before testing.
 
 Local Claude preview uses `claude --plugin-dir /absolute/package/plugins/studio`. The marketplace manifest is `.claude-plugin/marketplace.json`. Codex can read the shared skill, role, and playbook Markdown; Claude plugin loading, agent dispatch, and hook semantics are not automatically available in Codex. Client installation is separate setup, not a side effect of building.
 
@@ -27,7 +27,7 @@ Copy `samples/instance.sample.json` to `~/.config/studio/instance.json` and fill
 
 ## Build / Test
 
-Run in this order:
+Manual product-development checks are available in this order:
 
 ```sh
 npm run check
@@ -40,7 +40,7 @@ Biome checks the estate style; TypeScript checks strict types; the build emits d
 
 ## CI
 
-`.github/workflows/ci.yml` calls Dotty’s shared `estate-pr-ci.yml@v1` workflow for pull request changes, including title and body edits. The required check is `CI / pre-merge checks`. The native pre-push hook runs the root TypeScript check, schema-generating build, and existing behavior suite when project inputs change.
+`.github/workflows/ci.yml` calls Dotty’s shared `estate-pr-ci.yml@v1` workflow for pull request changes, including title and body edits. The required check is `CI / pre-merge checks`. Local Git checks follow the universal estate baseline described in the maintained Dotty checkout’s `AGENTS.md`.
 
 ## Ownership and conventions
 

@@ -92,13 +92,3 @@ repos:
         types_or: [html]
         additional_dependencies: ["prettier@3.9.10"]
         stages: [pre-commit]
-
-  - repo: local
-    hooks:
-      - id: studio-project
-        name: Studio types, schema build and behavior
-        entry: npm --ignore-scripts run check:push
-        language: system
-        pass_filenames: false
-        always_run: true
-        stages: [pre-push]
