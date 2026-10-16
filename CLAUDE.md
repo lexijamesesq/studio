@@ -40,7 +40,7 @@ Biome checks the estate style; TypeScript checks strict types; the build emits d
 
 ## CI
 
-`.github/workflows/ci.yml` calls Dotty’s shared `estate-pr-ci.yml@v1` workflow for pull request changes, including title and body edits. The required check is `Shared / CI / Pre-Merge Checks`. Local Git checks follow the universal estate baseline described in the maintained Dotty checkout’s `AGENTS.md`.
+`.github/workflows/ci.yml` calls Dotty’s shared `estate-pr-ci.yml@v1` workflow for pull request changes, including title and body edits. The merge panel displays `CI / Shared / Pre-Merge Checks`; native protection requires API context `Shared / Pre-Merge Checks`. Local Git checks follow the universal estate baseline described in the maintained Dotty checkout’s `AGENTS.md`.
 
 ## Ownership and conventions
 
