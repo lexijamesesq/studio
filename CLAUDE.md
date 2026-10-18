@@ -1,62 +1,32 @@
 ---
 tags:
   - type/claude-repo
-description: "Studio's publishing plugin and TypeScript operations for topic discovery, selection, and editorial preparation."
-docs_home: "{workspace_root}/Studio"
+description: "Studio's reusable plugin: skills and agents for a personal brand agency."
+docs_home: "{workspace_root}/Projects/Studio"
 ---
 
 # Studio
 
-This repository ships reusable publishing behavior and deterministic Markdown record operations. Interactive sessions use its skills to present saved article opportunities, record the author's choice, and develop preparation. Scheduled research consumes the same contracts through a thin agent-ops invocation. The paired vault project holds publishing intent and design decisions; this guide is sufficient to build and test without vault access.
+This repository ships Studio's reusable Claude Code plugin, packaged through the marketplace entry at `.claude-plugin/marketplace.json`. Intent, design decisions, and personal material live in the paired vault project at `docs_home`; nothing personal is committed here.
 
 ## Setup
 
-For manual product development, use Node 22+ and npm. `npm ci` prepares dependencies and `npm run build` generates `dist/` and the JSON schemas. Tests include the compiled CLI, so build before testing.
-
-Local Claude preview uses `claude --plugin-dir /absolute/package/plugins/studio`. The marketplace manifest is `.claude-plugin/marketplace.json`. Codex can read the shared skill, role, and playbook Markdown; Claude plugin loading, agent dispatch, and hook semantics are not automatically available in Codex. Client installation is separate setup, not a side effect of building.
+Node 22+ and npm. From a fresh clone run `npm ci`.
 
 ## Configuration
 
-Copy `samples/instance.sample.json` to `~/.config/studio/instance.json` and fill its placeholder paths once. `STUDIO_CONFIG` or CLI `--config` overrides it. Keep this file outside git; there is no required secret in the Studio package. Scheduled provider credentials belong to agent-ops runtime configuration.
-
-```json
-{"schemaVersion":1,"packageRoot":"/absolute/package","vaultRoot":"/absolute/vault","recordsPath":"Studio/Publishing","sources":[{"id":"method","path":"Studio/Knowledge/method.md","publicUse":"private"}],"intentPaths":[],"lessonPaths":[]}
-```
-
-`packageRoot` is the absolute built backend location used by cached plugin instructions. `vaultRoot` is absolute; `recordsPath` is vault-relative and confined to Studio. Each source has a stable `id`, exactly one vault-relative `path` or public HTTPS `url`, and `publicUse` of `private`, `paraphrase`, or `quotable`. `intentPaths` and `lessonPaths` are optional configured context lists. Generated `schemas/config.schema.json` and runtime Zod validation define the contract; runtime validation additionally enforces path and cross-field constraints.
+None. Configuration a consumer must supply ships as a `*.sample.*` template when the plugin first needs it.
 
 ## Build / Test
 
-Manual product-development checks are available in this order:
-
-```sh
-npm run check
-npm run typecheck
-npm run build
-npm test
-```
-
-Biome checks the estate style; TypeScript checks strict types; the build emits declarations, CLI code, and draft-07 schemas; Vitest exercises temporary synthetic storage, actual CLI calls, source boundaries, retries, revisions, and preparation continuity. Tests do not require model credentials or private vault data.
+- `npm run check`: Biome lint and format check.
+- `npm test`: Vitest; passes with no test files until the package has code.
 
 ## CI
 
-`.github/workflows/ci.yml` calls Dotty’s shared `estate-pr-ci.yml@v1` workflow for pull request changes, including title and body edits. The merge panel displays `CI / Shared / Pre-Merge Checks`; native protection requires API context `Shared / Pre-Merge Checks`. Local Git checks follow the universal estate baseline described in the maintained Dotty checkout’s `AGENTS.md`.
+Every pull request runs the estate's shared checks and Margot review through `.github/workflows/ci.yml`; Ollie's merge workflows live beside it. A pull request merges only after the required checks pass.
 
-## Ownership and conventions
+## Conventions
 
-- Studio owns publishing behavior, agents, skills, playbooks, schemas, state operations, and its versioned release artifact.
-- agent-ops owns thin scheduled invocation, provider runtime/isolation, artifact and image pins, and monitoring.
-- susuwatari-config owns host provisioning and prerequisites.
-- The vault and private instance configuration own personal source material, publishing records, and operator-specific paths. Never commit those to this repository.
-
-Keep workflow mechanics in the shared TypeScript operations; role judgment belongs in the packaged Markdown. A topic choice requires the author's explicit selection. Selection creates a resumable preparing article; only actual research/development supplies preparation. Do not infer an endorsed belief from topic selection.
-
-Same-host locks and atomic record replacement do not provide distributed transactions through Obsidian Sync. Scheduled runs append research records; one interactive writer owns workspace state. Changes to that boundary require demonstrated conflict behavior.
-
-## Key files
-
-| File | Purpose |
-| ------ | ------- |
-| `src/schema-export.ts` | Generates committed `schemas/*.schema.json`; change source schemas and rebuild instead of editing generated files. |
-| `plugins/studio/backend.md` | Resolves the backend from private instance configuration without assuming checkout location or session cwd. |
-| `src/index.ts` | Public state operations shared by the CLI and future adapters. |
+- Personal paths, vault content, and credentials never enter the repository.
+- A skill is added only once its service is designed and validated.
