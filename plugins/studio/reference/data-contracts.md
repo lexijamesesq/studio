@@ -41,7 +41,7 @@ updated: YYYY-MM-DD
 
 | File | Holds | Written by | Read by |
 |---
-| `Current.md` | resume surface: `idea-ref, stage (research\|interview\|draft\|critique\|revise\|edit\|signed\|published), draft-file, open-questions, next-action` | every phase | a resuming session |
+| `Current.md` | resume surface: `idea-ref, form, lens (copied from the idea record), stage (research\|interview\|draft\|critique\|revise\|edit\|signed\|published), draft-file, lessons-applied (keys), open-questions (`KEY — question \| dismissed \| ruling \| resolved — TEXT`), next-action (research \| interview \| draft \| council \| revise \| her review \| learn)` | every phase | a resuming session; `draft` (lesson scope) |
 | `Position brief.md` | author source: stated (verbatim+source) · articulated-for-her (not-her-words, marked) · gaps | interview | draft |
 | `Interview.md` | her answers verbatim, segmented | interview | draft |
 | `Research.md` | evidence for/against each reading, counter-readings, Strong/Moderate/Weak verdict | research | draft (Weak ⇒ no draft) |
@@ -54,10 +54,10 @@ updated: YYYY-MM-DD
 ## 3. Lessons store (`learning.lessons`) — written by `/studio:learn`; discovery idea-verdicts are NOT here (they live in each idea record's `verdict`, §1)
 
 ```markdown
-## Her verdicts (verbatim) — draft/editorial sign-offs and edit calls only
-- [<draft ref>] "<her verbatim words>" — authority: explicit — scope: <what it governs>
+## Her verdicts (verbatim) — editorial sign-offs, edit calls, rules she states, corrections
+- L<n> [<draft ref>] "<her verbatim words>" — authority: explicit — scope: <what it governs> — supersedes: <key, if a correction>
 ## Derived lessons (marked derived; second-tier)
-- <lesson> — from <draft ref, the edit> — authority: confirmed | provisional — scope: <context it governs> — status: active | corrected(<date> — <her words>)
+- L<n> <lesson> — from <draft ref, the edit> — authority: confirmed | provisional — scope: <context it governs> — council: flagged(<key>) | missed — status: active | corrected(<date> — <her words>)
 ```
 
 Authority: `explicit` (she stated it) and `confirmed` (derived, she said yes) supersede older guidance; `provisional` (derived from her edits, unruled) applies automatically within its scope and is marked so a correction is cheap. An identity or publishing-intent lesson, or one that conflicts with an explicit/confirmed lesson or the voice preferences, is never provisional — it returns to her. A contextual lesson stays scoped to its context, never applied as a universal. `draft`, `revise`, and the council read only `active` entries; the council raises a violated active lesson as a finding.
@@ -75,7 +75,7 @@ Authority: `explicit` (she stated it) and `confirmed` (derived, she said yes) su
 | Critique (council) | draft, transcript, brief, research, voice foundation + §3.1 preferences, lessons, prior `Review.md` | `Review.md` (round appended) | council-ready = aggregate ≥ 9 with no open substantiated finding; her verdict is the only gate |
 | Her edits | the council-ready draft + `Review.md` | `Draft-final.md`; edit-lessons → `learning.lessons` | "I'd post this" = done |
 | Publish | `Draft-final` | posted copy + URL in the workspace | her initiation only |
-| Learn | `Draft-1`↔`Draft-final` diff; her discovery verdicts | `learning.lessons` (on her yes); idea-record `verdict` + status | her approval each time |
+| Learn | `Draft-current`↔`Draft-final` diff + `Review.md`; her discovery verdicts | `learning.lessons` (her words explicit; derived lessons provisional, applied within scope); conflicts and identity/intent → her via `Current.md`; idea-record `verdict` + status | provisional applies without her; a correction stops it |
 
 ## 5. Bases view
 

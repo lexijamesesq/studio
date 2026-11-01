@@ -11,6 +11,8 @@ allowed-tools:
   - mcp__obsidian__read_note_lines
   - mcp__obsidian__write_note
   - mcp__obsidian__patch_note
+  - mcp__obsidian__update_frontmatter
+  - mcp__obsidian__get_note_outline
   - mcp__obsidian__get_frontmatter
   - mcp__obsidian__list_directory
 ---
@@ -23,9 +25,9 @@ Run in a context that did not write the draft, on a different model than the wri
 
 ## Inputs / outputs
 
-Read, from the article folder `workspace.articles_root/<stable-name>/` (`list_directory`): the draft — `$ARGUMENTS` names it, else `Draft-current.md`, else `Draft-1.md` (its draft section only, not its alternatives or notes); `Interview.md`; `Position brief.md` (its verbatim-stated section — her lines with sources — is author evidence; its articulated-for-her section is not, and a draft line taken from it is a Perell finding); `Research.md` (check that it tests this draft's claim — if it tests a neighboring one, say so and count its evidence only where it bears on this claim); `Current.md` (`open-questions` carries the writer's dismissals as finding key + evidence — the one channel for them); and the existing `Review.md` if any. Also `creator.voice_foundation`, `creator.voice_preferences` (the note at that key, section `creator.voice_preferences_section`), and `learning.lessons` (`active` entries). Never the writer's reasoning or self-assessment; nothing else in the vault, no web. Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; an absent key stops the skill and is named in the report.
+Read, from the article folder `workspace.articles_root/<stable-name>/` (`list_directory`): the draft — `$ARGUMENTS` names it, else `Draft-current.md`, else `Draft-1.md` (its draft section only, not its alternatives or notes); `Interview.md`; `Position brief.md` (its verbatim-stated section — her lines with sources — is author evidence; its articulated-for-her section is not, and a draft line taken from it is a Perell finding; its analysis and gap sections are neither author nor research evidence); `Research.md` (check that it tests this draft's claim — if it tests a neighboring one, say so and count its evidence only where it bears on this claim); `Current.md` (`open-questions` entries are `<finding key> — dismissed — <evidence>` or `<finding key> — question — <for her>`; the council rules on dismissals, leaves questions as written, and appends its own `author` questions the same way); and the existing `Review.md` if any. Also `creator.voice_foundation`, `creator.voice_preferences` (the note at that key, section `creator.voice_preferences_section`), and `learning.lessons` (`active` entries). Never the writer's reasoning or self-assessment; nothing else in the vault, no web. Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; an absent key stops the skill and is named in the report.
 
-Write `Review.md` (shape below) and update `Current.md` per `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §2 (stage `critique`; next action: `revise` or `her review`).
+Write `Review.md` (shape below) and update `Current.md` per `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §2 (stage `critique`; `<stable-name>` is its `idea-ref`). Tag every necessary finding with its repair source — **text** (the writer can fix it from the material in hand), **research** (a fact is missing), or **author** (her substance is missing) — and set the next action from the tags: `revise` while any necessary finding is text-repairable; `interview` when every necessary finding needs her (with the one question each); `research` when a fact blocks; `her review` when council-ready. Never spend a revise round on findings only she can resolve.
 
 ## The six remits
 
@@ -35,10 +37,10 @@ Each perspective reads the whole piece through its own remit and scores it 1–1
 - **Tim Urban** — does the reader actually understand the mechanism by the end, from first principles, at the altitude she claims? Where does the explanation skip a step or hide behind a term?
 - **Shaan Puri** — would anyone stop for the first line, and would they send it to a colleague? Where does the reader leave?
 - **Greg Isenberg** — is it specific enough to act on — a real situation, a real decision, a consequence someone could name Monday? Where is it abstraction wearing a verdict?
-- **David Perell** — is this hers and only hers: her position, her distinction, her language, an argument built rather than a transcript retold? Every claim, scene, judgment, opponent, and position must trace to `Interview.md` or the brief's verbatim-stated lines; every factual claim to `Research.md`. A line that sounds like her but takes a position she did not state is this lens's finding (viewpoint), as is a `[NEEDS HER]` placeholder still in the text. Authorship and support failures are necessary at any score.
-- **AI-slop detector** — craft and surface against the §3.1 preferences at `creator.voice_preferences`: manufactured fragment-aphorisms, list-drift, mechanical connectives, uniform polish, em-dash density standing in for rhythm, performed ownership, staged vulnerability, textbook exposition, announced expertise, a softened or rounded-corner treatment of a point she made sharply. Viewpoint fidelity belongs to Perell; this lens judges how it is written. A lesson in `learning.lessons` that the draft violates is a finding, cited to the lesson.
+- **David Perell** — is this hers and only hers: her position, her distinction, her language, an argument built rather than a transcript retold? Every claim, scene, judgment, opponent, and position must trace to `Interview.md` or the brief's verbatim-stated lines; every factual claim to `Research.md`. A line that sounds like her but takes a position she did not state is this lens's finding (viewpoint). A `[NEEDS HER]` placeholder is the open finding it marks, carried under its existing key — not a new one. Authorship and support failures are necessary at any score.
+- **AI-slop detector** — craft and surface against the §3.1 preferences at `creator.voice_preferences`: manufactured fragment-aphorisms, list-drift, mechanical connectives, uniform polish, em-dash density standing in for rhythm, performed ownership, staged vulnerability, textbook exposition, announced expertise, a softened or rounded-corner treatment of a point she made sharply. Viewpoint fidelity belongs to Perell; this lens judges how it is written. A draft passage that violates an `active` lesson in `learning.lessons` is a necessary finding under whichever lens the passage offends, cited to the lesson.
 
-One passage, one lens: file a finding under the lens whose remit it most offends and cross-reference the other; two lenses do not make one problem two findings.
+One problem, one finding: file it under the lens whose remit it most offends and cross-reference the other; the same problem seen by two lenses is not two findings, but two distinct problems in one passage are.
 
 ## Scoring (TD §2)
 
@@ -58,7 +60,7 @@ Whole numbers. Aggregate = the equal-weight mean of all six, truncated (not roun
 
 **Round 2+ — carry forward.** Load `Review.md` and review `Draft-current.md`. For each earlier finding: **resolved** (quote the passage that fixes it), **open** (still there — say why the repair did not take; an optional finding the repair made worse becomes necessary), or **dismissed** (the writer dismissed it in `Current.md` with evidence; uphold it if the evidence holds, else reopen it with the reason; a justified dismissal stays unless the text or evidence changed). The writer's claim that something is fixed, or a finding simply disappearing, is not resolution. Then read the whole revised draft again through all six and report new material problems honestly, including earlier misses. Distinguish necessary repairs from optional suggestions.
 
-**Stall** (report it; do not loop): the same substantive weakness survives a repair, or treatments alternate between incompatible approaches with no materially different supported option left. Name the issue, what was tried, and the smallest input that would unlock it — only her missing thinking, a conflicting preference, or a genuine author decision goes to her; a missing fact goes to `research`; thin author material goes to `interview`.
+**Stall** (report it; do not loop): the same substantive weakness survives a repair, or treatments alternate between incompatible approaches with no materially different supported option left. A finding routed to her and never repaired is waiting, not stalled. The council never edits the writer's questions to her. Name the issue, what was tried, and the smallest input that would unlock it — only her missing thinking, a conflicting preference, or a genuine author decision goes to her; a missing fact goes to `research`; thin author material goes to `interview`.
 
 ## Review.md
 
@@ -76,18 +78,19 @@ updated: YYYY-MM-DD
 
 ## Round <n> — <YYYY-MM-DD> — <draft file> — writer: <model or "unconfirmed"> · council: <model>
 **Aggregate:** <x.xx> (Housel <n> · Urban <n> · Puri <n> · Isenberg <n> · Perell <n> · Slop <n>) — **council-ready: yes/no**
+**Evidence base:** <which of Research.md's findings bear on this draft's claim; what does not>
 
 ### Carried forward (round 2+)
 - R1-F1 — <status: resolved | open | dismissed> — <passage or reason>
 
 ### Findings (prioritized; necessary repairs first, then optional)
-- R<n>-F<k> [<perspective>] [necessary | optional] — **passage:** "<quoted>" · **problem:** … · **effect:** … · **evidence:** <transcript/research/voice line, or the standard>
+- R<n>-F<k> [<perspective>] [necessary | optional] [repair: text | research | author] — **passage:** "<quoted>" · **problem:** … · **effect:** … · **evidence:** <transcript/research/voice line, or the standard>
 
 ### Six assessments (one short paragraph each, grounded in the text)
 ### Why ready / what still blocks (informative, not a number)
 ```
 
-Rounds append; nothing earlier is rewritten. Finding keys are stable across rounds.
+Rounds append; nothing earlier is rewritten. Finding keys are stable across rounds. A finding never offers the writer a conditional out ("unless her ruling is…") — a decision only she can make is an `author` repair, and the question goes to her through `Current.md`.
 
 ## Stop
 
