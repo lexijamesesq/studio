@@ -19,7 +19,7 @@ Read a draft as a sharp reader would and return specific findings for the author
 
 ## Inputs / outputs
 
-Read the article folder (under `workspace.articles_root`; find it with `list_directory`): `Draft-1.md` or the named draft, `Interview.md`, `Research.md`, `Position brief.md`. Also `creator.voice_foundation` (the voice guide). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`. Write `Critique-1.md`.
+Read the article folder (under `workspace.articles_root`; find it with `list_directory`): `Draft-1.md` or the named draft, `Interview.md`, `Research.md`, `Position brief.md`. Also `creator.voice_foundation` (the voice guide). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; a key that is absent stops the skill and is named in the report. Read nothing else: not another article folder, not the idea records, not her convictions, not the web. Write `Critique-1.md`.
 
 ## Steps
 

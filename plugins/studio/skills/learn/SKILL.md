@@ -19,7 +19,7 @@ allowed-tools:
 
 # /studio:learn
 
-Turn her reactions into changes later runs use. Two entry points. Write nothing to the lessons store without her explicit yes. Her words verbatim first; derived lessons marked and second. Store shape: `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §3. Resolve `workspace.articles_root`, `workspace.ideas_dir`, and `learning.lessons` (the lessons store) from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`.
+Turn her reactions into changes later runs use. Two entry points. Write nothing to the lessons store without her explicit yes. Her words verbatim first; derived lessons marked and second. Store shape: `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §3. Resolve `workspace.articles_root`, `workspace.ideas_dir`, and `learning.lessons` (the lessons store) from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; a key that is absent stops the skill and is named to her. Read only the named article folder or idea record and the lessons store — nothing else.
 
 ## After a signed draft
 

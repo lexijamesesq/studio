@@ -24,7 +24,7 @@ Produce one first draft from the interview transcript, in the author's voice, fo
 
 ## Inputs / outputs
 
-Read from the article folder (under `workspace.articles_root`; find it with `list_directory` by the idea's stable-name): `Position brief.md`, `Interview.md`, `Research.md` (if present). Also `creator.voice_foundation`; `creator.voice_preferences` (the note at that key, section `creator.voice_preferences_section`); `learning.lessons` (derived lessons, if any). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`. Write `Draft-1.md` to the article folder. Never write personal content into the repo.
+Read from the article folder (under `workspace.articles_root`; find it with `list_directory` by the idea's stable-name): `Position brief.md`, `Interview.md`, `Research.md` (if present). Also `creator.voice_foundation`; `creator.voice_preferences` (the note at that key, section `creator.voice_preferences_section`); `learning.lessons` (derived lessons, if any). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; a key that is absent stops the skill and is named in the report. Read nothing else: not another article folder, not the idea records, not her convictions, not a repository. Write `Draft-1.md` to the article folder. Never write personal content into the repo.
 
 ## Steps
 
