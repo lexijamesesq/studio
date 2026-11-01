@@ -1,0 +1,106 @@
+---
+import "@fontsource-variable/newsreader/wght.css";
+import "@fontsource/ibm-plex-mono/latin-400.css";
+import ProjectBody from "../components/ProjectBody.astro";
+import { formatIsoDate } from "../lib/dates";
+import { loadHomepage } from "../lib/homepage";
+import Base from "../layouts/Base.astro";
+import "../styles/c.css";
+
+const { now, articles, projects, featured, updated } = await loadHomepage();
+const updatedIso = formatIsoDate(updated);
+---
+
+<Base title="Working log · Alexis Bussa" description={now.intro}>
+  <main id="content" class="log">
+    <header class="object">
+      <div>
+        <h1>Alexis Bussa</h1>
+        <p class="switch"><a href="/">Directions</a> · C, working log</p>
+      </div>
+      <figure>
+        <img src={now.visual.src} alt={now.visual.alt} width="900" height="740" />
+        <figcaption>
+          <time datetime={now.updated}>{updatedIso}</time>
+          <span>Stand-in</span>
+        </figcaption>
+      </figure>
+    </header>
+    <ol class="entries">
+      <li class="entry">
+        <time class="when" datetime={now.updated}>{updatedIso}</time>
+        <p>{now.intro}</p>
+      </li>
+      <li class="entry">
+        <time class="when" datetime={now.updated}>{updatedIso}</time>
+        <div>
+          <p>{now.activity}</p>
+          <p>{now.where}</p>
+        </div>
+      </li>
+      <li class="entry">
+        <time class="when" datetime={now.updated}>{updatedIso}</time>
+        <p>{now.lastSeenBuilding}</p>
+      </li>
+      <li class="entry">
+        <time class="when" datetime={now.updated}>{updatedIso}</time>
+        <div>
+          <p class="kicker">By the way</p>
+          <h2>
+            <a href={featured.data.mediumUrl} rel="external">{featured.data.title}</a>
+          </h2>
+          <p class="hook">{featured.data.hook}</p>
+        </div>
+      </li>
+    </ol>
+    <section class="section" aria-labelledby="writing">
+      <h2 id="writing">Writing</h2>
+      <ol class="entries">
+        {
+          articles.map((article) => (
+            <li class="entry">
+              <time class="when" datetime={formatIsoDate(article.data.date)}>
+                {formatIsoDate(article.data.date)}
+              </time>
+              <div>
+                <h3>
+                  <a href={article.data.mediumUrl} rel="external">
+                    {article.data.title}
+                  </a>
+                </h3>
+                <p class="hook">{article.data.hook}</p>
+                {article.data.image ? (
+                  <img class="piece-image" src={article.data.image} alt={article.data.title} />
+                ) : null}
+                <p class="meta">
+                  <a href={article.data.mediumUrl} rel="external">
+                    Medium
+                  </a>
+                </p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+    <section class="section" aria-labelledby="projects">
+      <h2 id="projects">Projects</h2>
+      <ol class="entries">
+        {
+          projects.map((project) => (
+            <li class="entry">
+              <p class="piece-status">{project.data.status}</p>
+              <div>
+                <h3>{project.data.title}</h3>
+                <p class="summary">{project.data.summary}</p>
+                <div class="body">
+                  <ProjectBody project={project} />
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+  </main>
+</Base>

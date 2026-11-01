@@ -1,0 +1,13 @@
+{
+  "$schema": "./now.schema.json",
+  "intro": "Product and Design leader, recovering former Engineer. Currently teaching my cat Spanish.",
+  "activity": "Building a fleet of self-hosted eve agents, and a software factory so they can maintain and evolve themselves.",
+  "where": "[Sample] At home, cat in the room.",
+  "lastSeenBuilding": "Last seen building a software factory so the agents can maintain and evolve themselves.",
+  "visual": {
+    "src": "/stand-in.svg",
+    "alt": "Stand-in still life: a clay figure, a cat, and two plain blocks. Not a portrait. Her agents will replace this picture and keep it current."
+  },
+  "updated": "2026-11-01",
+  "featuredArticle": "sample-factory"
+}

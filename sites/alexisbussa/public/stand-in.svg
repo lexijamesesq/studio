@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 740">
+  <rect width="900" height="740" fill="#efe6da"/>
+  <rect y="508" width="900" height="232" fill="#e5d6c4"/>
+  <rect y="508" width="900" height="4" fill="#d4c2ae"/>
+  <rect x="348" y="438" width="204" height="70" fill="#d2bea6"/>
+  <path fill="#c4896a" d="M328 508c0-78 48-128 122-134 74 6 122 56 122 134H328z"/>
+  <ellipse cx="450" cy="318" rx="76" ry="88" fill="#c4896a"/>
+  <path d="M250 470c48 18 62-48 24-72" stroke="#4e4742" stroke-width="18" stroke-linecap="round"/>
+  <ellipse cx="176" cy="466" rx="102" ry="42" fill="#4e4742"/>
+  <circle cx="104" cy="422" r="44" fill="#4e4742"/>
+  <path fill="#4e4742" d="m74 400-18-46 46 32zM118 388l22-44 24 58z"/>
+  <path fill="#6b635c" d="m86 392-8-24 24 16zM128 384l10-22 12 28z"/>
+  <rect x="648" y="372" width="68" height="136" fill="#7e8f78"/>
+  <rect x="734" y="446" width="54" height="62" fill="#c4b49a"/>
+  <text x="450" y="600" text-anchor="middle" fill="#5c5146" font-family="Georgia, Palatino, serif" font-size="22" letter-spacing="3">STAND-IN</text>
+  <text x="450" y="630" text-anchor="middle" fill="#5c5146" font-family="Georgia, Palatino, serif" font-size="16">Not a portrait</text>
+</svg>

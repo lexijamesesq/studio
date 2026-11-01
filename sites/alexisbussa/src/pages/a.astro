@@ -1,0 +1,89 @@
+---
+import "@fontsource-variable/fraunces/standard-italic.css";
+import "@fontsource-variable/fraunces/standard.css";
+import "@fontsource-variable/source-sans-3/wght.css";
+import ProjectBody from "../components/ProjectBody.astro";
+import { formatDay, formatIsoDate } from "../lib/dates";
+import { loadHomepage } from "../lib/homepage";
+import Base from "../layouts/Base.astro";
+import "../styles/a.css";
+
+const { now, articles, projects, featured, updated } = await loadHomepage();
+---
+
+<Base title="Editorial · Alexis Bussa" description={now.intro}>
+  <main id="content" class="sheet">
+    <p class="switch"><a href="/">Directions</a> · A, editorial</p>
+    <header class="opener">
+      <img class="portrait" src={now.visual.src} alt={now.visual.alt} width="900" height="740" />
+      <div>
+        <p class="name">Alexis Bussa</p>
+        <h1>{now.intro}</h1>
+      </div>
+    </header>
+    <div class="status">
+      <p>{now.activity}</p>
+      <p>{now.where}</p>
+      <p>{now.lastSeenBuilding}</p>
+      <p class="updated">
+        Updated <time datetime={now.updated}>{formatDay(updated)}</time>
+      </p>
+    </div>
+    <aside class="pointer">
+      <p class="kicker">By the way</p>
+      <h2>
+        <a href={featured.data.mediumUrl} rel="external">{featured.data.title}</a>
+      </h2>
+      <p class="hook">{featured.data.hook}</p>
+      <p class="meta">
+        <a href={featured.data.mediumUrl} rel="external">Medium</a>
+      </p>
+    </aside>
+    <section class="section" aria-labelledby="writing">
+      <h2 id="writing">Writing</h2>
+      <ul class="pieces">
+        {
+          articles.map((article) => (
+            <li>
+              <h3>
+                <a href={article.data.mediumUrl} rel="external">
+                  {article.data.title}
+                </a>
+              </h3>
+              <p class="hook">{article.data.hook}</p>
+              {article.data.image ? (
+                <img class="piece-image" src={article.data.image} alt={article.data.title} />
+              ) : null}
+              <p class="meta">
+                <time datetime={formatIsoDate(article.data.date)}>{formatDay(article.data.date)}</time>
+                {" · "}
+                <a href={article.data.mediumUrl} rel="external">
+                  Medium
+                </a>
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section class="section" aria-labelledby="projects">
+      <h2 id="projects">Projects</h2>
+      <ul class="pieces">
+        {
+          projects.map((project) => (
+            <li>
+              <h3>
+                {project.data.title}
+                <span class="piece-status">{project.data.status}</span>
+              </h3>
+              <p class="summary">{project.data.summary}</p>
+              <div class="body">
+                <ProjectBody project={project} />
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Base>

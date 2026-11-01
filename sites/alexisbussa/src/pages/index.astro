@@ -1,0 +1,36 @@
+---
+import "@fontsource-variable/source-sans-3/wght.css";
+import Base from "../layouts/Base.astro";
+import "../styles/index.css";
+
+const description =
+  "Three throwaway homepage directions for alexisbussa.com. Same status, same pieces, same projects.";
+---
+
+<Base title="Directions · Alexis Bussa" description={description}>
+  <main id="content" class="sheet">
+    <p class="name">Alexis Bussa</p>
+    <h1>Three openings of the same page.</h1>
+    <p class="dek">
+      Throwaway prototypes for alexisbussa.com. Each direction reads one status file, the same
+      pieces, and the same projects.
+    </p>
+    <ol class="directions">
+      <li>
+        <a href="/a">A · Editorial</a>
+        <p class="rationale">Text leads. The picture stays small, beside the words.</p>
+      </li>
+      <li>
+        <a href="/b">B · Still life</a>
+        <p class="rationale">One large stand-in, and a single status sentence under it.</p>
+      </li>
+      <li>
+        <a href="/c">C · Working log</a>
+        <p class="rationale">A dated log. The picture sits in it like an object kept current.</p>
+      </li>
+    </ol>
+    <p class="note">
+      Lines marked [Sample] are placeholders. The picture is a stand-in, not a portrait.
+    </p>
+  </main>
+</Base>

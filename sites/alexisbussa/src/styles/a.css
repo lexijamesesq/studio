@@ -1,0 +1,188 @@
+@import "./base.css";
+
+body {
+  background: #f4f0e8;
+  color: #1c1915;
+  font-family: "Fraunces Variable", "Iowan Old Style", Palatino, Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 430;
+  line-height: 1.5;
+  font-optical-sizing: auto;
+}
+
+.sheet {
+  width: min(46rem, calc(100% - 2.5rem));
+  margin: 0 auto;
+  padding: 1.75rem 0 6.5rem;
+}
+
+.switch {
+  margin-bottom: 2.75rem;
+}
+
+.opener {
+  display: grid;
+  grid-template-columns: 8.75rem minmax(0, 1fr);
+  gap: 1.25rem 1.75rem;
+  align-items: start;
+}
+
+.portrait {
+  width: 8.75rem;
+  margin-top: 0.35rem;
+}
+
+.name {
+  font-size: 1.02rem;
+  font-weight: 520;
+}
+
+h1 {
+  margin-top: 0.7rem;
+  font-size: clamp(2rem, 4.4vw, 3.2rem);
+  font-weight: 460;
+  line-height: 1.08;
+  letter-spacing: -0.028em;
+  text-wrap: pretty;
+}
+
+.status {
+  max-width: 34rem;
+  margin-top: 3.15rem;
+}
+
+.status p + p {
+  margin-top: 1.15rem;
+}
+
+.updated {
+  margin-top: 1.35rem;
+  color: #4a453c;
+  font-size: 0.98rem;
+}
+
+.pointer {
+  max-width: 32rem;
+  margin-top: 4.5rem;
+}
+
+.kicker,
+.section h2,
+.meta {
+  font-family: "Source Sans 3 Variable", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 560;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.kicker,
+.section h2 {
+  font-size: 0.74rem;
+}
+
+.pointer h2 {
+  margin-top: 0.75rem;
+  font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+  font-weight: 520;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+}
+
+.pointer h2 a {
+  text-underline-offset: 0.14em;
+}
+
+.hook,
+.summary {
+  margin-top: 0.7rem;
+  max-width: 34rem;
+}
+
+.meta {
+  margin-top: 0.7rem;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #4a453c;
+}
+
+.section {
+  margin-top: 4.75rem;
+}
+
+.pieces {
+  list-style: none;
+  margin-top: 1.6rem;
+  padding: 0;
+}
+
+.pieces li + li {
+  margin-top: 2.15rem;
+}
+
+.pieces h3 {
+  font-size: 1.42rem;
+  font-weight: 520;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+}
+
+.piece-status {
+  color: #4a453c;
+  font-size: 0.78em;
+  font-weight: 450;
+}
+
+.piece-status::before {
+  content: " · ";
+}
+
+.piece-image {
+  width: min(100%, 28rem);
+  margin-top: 0.85rem;
+}
+
+.pieces .body {
+  max-width: 34rem;
+  margin-top: 0.45rem;
+  font-size: 1.05rem;
+}
+
+.pieces .body p {
+  margin-top: 0.7rem;
+}
+
+.pieces .body p:first-child {
+  margin-top: 0;
+}
+
+@media (min-width: 960px) {
+  .sheet {
+    width: min(50rem, calc(100% - 8rem));
+    padding-top: 3.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .opener {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .portrait {
+    width: 7.5rem;
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: 1.95rem;
+  }
+
+  .status,
+  .pointer,
+  .section {
+    margin-top: 2.75rem;
+  }
+}

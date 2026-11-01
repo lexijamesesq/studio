@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Static assets only. No worker script, no routes, no account id.
+  // Do not deploy this prototype and do not create Cloudflare resources from it.
+  "name": "alexisbussa",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

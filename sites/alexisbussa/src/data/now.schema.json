@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://alexisbussa.com/schemas/now.json",
+  "title": "Homepage status",
+  "description": "The homepage status file at src/data/now.json. Agents rewrite this file. Directions /a, /b, and /c all read it, so the comparison stays fair. Keep claims factual. Prefix anything that is not a confirmed fact with [Sample]. Do not add employers, metrics, quotations, or accomplishments.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "intro",
+    "activity",
+    "where",
+    "lastSeenBuilding",
+    "visual",
+    "updated",
+    "featuredArticle"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Pointer to this schema. Editors and agents use it. The site does not render it."
+    },
+    "intro": {
+      "type": "string",
+      "minLength": 1,
+      "description": "One dry, specific line about who she is. It may contain more than one sentence. Not a headline, a title list, or a mission statement."
+    },
+    "activity": {
+      "type": "string",
+      "minLength": 1,
+      "description": "What she is in the middle of right now. Specific and current. Not a pitch."
+    },
+    "where": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Where that work is happening. If the place is not a confirmed fact, keep the [Sample] prefix."
+    },
+    "lastSeenBuilding": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The last-seen-building line, as a complete sentence. Direction B uses this as the single sentence under the picture."
+    },
+    "visual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["src", "alt"],
+      "description": "The one live picture at the top of the homepage, kept current by agents. It should read as Lexi and her agents, not as a diagram.",
+      "properties": {
+        "src": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Site path served from public/ (start with /) or an absolute URL. Replace the file and update this path together."
+        },
+        "alt": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What is actually in the picture, including that it is a stand-in when it still is."
+        }
+      }
+    },
+    "updated": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Calendar date this file was last updated, YYYY-MM-DD."
+    },
+    "featuredArticle": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Id of the article to point at. Matches the filename in src/content/articles without .md."
+    }
+  }
+}
