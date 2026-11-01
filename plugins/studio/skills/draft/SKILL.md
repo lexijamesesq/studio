@@ -20,7 +20,7 @@ allowed-tools:
 
 # /studio:draft
 
-Produce one first draft from the interview transcript, in the author's voice, for the council and then her. Her words are the only source of substance: the transcript, and the brief's verbatim-stated lines (hers, sourced). Research enters only as attributed research — "the survey found…" — never as her experience, her position, or a claim stronger than she made (FR4). Do not judge whether it is good enough to publish — that is hers. With `revise` in `$ARGUMENTS`, or when `Review.md` exists and is not council-ready, run **Revise mode** instead (below).
+Produce one first draft from the interview transcript, in the author's voice, for the council and then her. Her words are the only source of substance: the transcript, and the brief's verbatim-stated lines (hers, sourced). Research enters only as attributed research — "the survey found…" — never as her experience, her position, or a claim stronger than she made. Do not judge whether it is good enough to publish — that is hers. With `revise` in `$ARGUMENTS`, or when `Review.md` exists and is not council-ready, run **Revise mode** instead (below).
 
 ## Inputs / outputs
 

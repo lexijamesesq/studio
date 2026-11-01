@@ -19,9 +19,9 @@ allowed-tools:
 
 # /studio:learn
 
-Make the next draft better than this one because of what she did to this one. A lesson that sits in a file and changes nothing is a failure; a lesson applied beyond its scope is a worse one. Her words verbatim first; derived lessons second and marked. Store shape: `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §3. Resolve `workspace.articles_root`, `workspace.ideas_dir`, and `learning.lessons` from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; an absent key stops the skill and is named to her. Read only the named article folder or idea record (and, for a correction, each article's `Current.md` under `workspace.articles_root`), the lessons store, and `creator.voice_preferences` (section `creator.voice_preferences_section`) for the conflict check — nothing else.
+Turn what she did to this draft into lessons the next draft and council apply, each within its scope. Her words verbatim first; derived lessons second and marked. Store shape: `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §3. Resolve `workspace.articles_root`, `workspace.ideas_dir`, and `learning.lessons` from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; an absent key stops the skill and is named to her. Read only the named article folder or idea record (and, for a correction, each article's `Current.md` under `workspace.articles_root`), the lessons store, and `creator.voice_preferences` (section `creator.voice_preferences_section`) for the conflict check — nothing else.
 
-## Authority (FR7)
+## Authority
 
 Every lesson carries one authority and one scope:
 
@@ -29,12 +29,12 @@ Every lesson carries one authority and one scope:
 - **confirmed** — derived, then she said yes. Applies within scope.
 - **provisional** — derived from her edits or feedback without her ruling. **Applies automatically within its scope** on the next draft and council; marked so a wrong one is cheap to correct.
 
-A lesson about **who she is, what she will publish, or where** (identity, publishing intent), or one that **conflicts** with an explicit or confirmed lesson, the voice preferences, or another lesson from the same pass, is never written on this pass — even a rule she stated outright, because she may not have the earlier preference in front of her. It returns to her with both sides stated; her ruling is then written as `explicit` and the superseded entry marked. Contextual ≠ universal — a lesson from a research-synthesis piece about evidence framing does not govern a narrative piece unless she says so; scope names the context.
+A lesson about **who she is, what she will publish, or where** (identity, publishing intent), or one that **conflicts** with an explicit or confirmed lesson, the voice preferences, or another lesson from the same pass, is not written on this pass — a rule she stated outright included. It returns to her with both sides stated; her ruling is then written as `explicit` and the superseded entry marked. Scope names the context: a lesson from a research-synthesis piece does not govern a narrative piece unless she says so.
 
 ## After a signed draft (or her edit pass)
 
 1. Load `Draft-current.md` and `Draft-final.md` (or whichever two she edited between) from `workspace.articles_root/<stable-name>/`, plus `Review.md` and `Current.md`. Diff them: her edits are the material.
-2. For each substantive edit of hers: name the lesson it implies, general but scoped (tone, structure, voice, claim-sizing, evidence framing, the form), and tag it **council-flagged** (the council raised that passage — give the key; say if its diagnosis differed or it closed the finding wrongly) or **council-missed**. The tags are the council's scorecard; record the counts in the article's `Current.md`.
+2. For each substantive edit of hers: name the lesson it implies, general but scoped (tone, structure, voice, claim-sizing, evidence framing, the form), and tag it **council-flagged** (the council raised that passage — give the key; say if its diagnosis differed or it closed the finding wrongly) or **council-missed**. Record the counts in the article's `Current.md` as `council-scorecard: flagged <n> / missed <n>`.
 3. Check every candidate — her verbatim remarks and the derived lessons alike — against the existing store, `creator.voice_preferences`, and each other. Anything that conflicts, and anything about identity or publishing intent, goes to `Current.md` `open-questions` for her with both sides stated, and is not written.
 4. Write the rest to `learning.lessons`, each entry with the next key (`L<n>`): under *Her verdicts*, each verbatim reaction with authority `explicit` and its scope; under *Derived lessons*, each derived lesson as `provisional` with scope, the edit it came from, and `status: active`. Append; never rewrite earlier entries — the correction path below changes an entry's `status` and nothing else.
 5. Report: the lessons written and their authority; what returned to her and why; the council-flagged / council-missed counts.

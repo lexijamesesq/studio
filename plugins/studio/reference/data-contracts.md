@@ -41,7 +41,7 @@ updated: YYYY-MM-DD
 
 | File | Holds | Written by | Read by |
 |---
-| `Current.md` | resume surface: `idea-ref, form, lens (copied from the idea record), stage (research\|interview\|draft\|critique\|revise\|edit\|signed\|published), draft-file, lessons-applied (keys), open-questions (`KEY — question \| dismissed \| ruling \| resolved — TEXT`), next-action (research \| interview \| draft \| council \| revise \| her review \| learn)` | every phase | a resuming session; `draft` (lesson scope) |
+| `Current.md` | resume surface: `idea-ref, form, lens (copied from the idea record), stage (research\|interview\|draft\|critique\|revise\|edit\|signed\|published), draft-file, lessons-applied (keys), council-scorecard (`flagged N / missed N`, written by learn), open-questions (`KEY — question \| dismissed \| ruling \| resolved — TEXT`), next-action (research \| interview \| draft \| council \| revise \| her review \| learn)` | every phase | a resuming session; `draft` (lesson scope) |
 | `Position brief.md` | author source: stated (verbatim+source) · articulated-for-her (not-her-words, marked) · gaps | interview | draft |
 | `Interview.md` | her answers verbatim, segmented | interview | draft |
 | `Research.md` | evidence for/against each reading, counter-readings, Strong/Moderate/Weak verdict | research | draft (Weak ⇒ no draft) |
@@ -60,7 +60,7 @@ updated: YYYY-MM-DD
 - L<n> <lesson> — from <draft ref, the edit> — authority: confirmed | provisional — scope: <context it governs> — council: flagged(<key>) | missed — status: active | corrected(<date> — <her words>)
 ```
 
-Authority: `explicit` (she stated it) and `confirmed` (derived, she said yes) supersede older guidance; `provisional` (derived from her edits, unruled) applies automatically within its scope and is marked so a correction is cheap. An identity or publishing-intent lesson, or one that conflicts with an explicit/confirmed lesson or the voice preferences, is never provisional — it returns to her. A contextual lesson stays scoped to its context, never applied as a universal. `draft`, `revise`, and the council read only `active` entries; the council raises a violated active lesson as a finding.
+Authority: `explicit` (she stated it) and `confirmed` (derived, she said yes) supersede older guidance; `provisional` (derived from her edits, unruled) applies automatically within its scope and is marked so a correction is cheap. An identity or publishing-intent lesson, or one that conflicts with an explicit/confirmed lesson, the voice preferences, or another lesson from the same pass, is not written on that pass at any authority — it returns to her, and her ruling is written as `explicit`. A contextual lesson stays scoped to its context, never applied as a universal. `draft`, `revise`, and the council read only `active` entries; the council raises a violated active lesson as a finding.
 
 ## 4. Per-phase handoffs (one owner; this table will drift from the skills — keep it in sync deliberately)
 

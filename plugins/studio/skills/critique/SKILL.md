@@ -38,11 +38,11 @@ Each perspective reads the whole piece through its own remit and scores it 1–1
 - **Shaan Puri** — would anyone stop for the first line, and would they send it to a colleague? Where does the reader leave?
 - **Greg Isenberg** — is it specific enough to act on — a real situation, a real decision, a consequence someone could name Monday? Where is it abstraction wearing a verdict?
 - **David Perell** — is this hers and only hers: her position, her distinction, her language, an argument built rather than a transcript retold? Every claim, scene, judgment, opponent, and position must trace to `Interview.md` or the brief's verbatim-stated lines; every factual claim to `Research.md`. A line that sounds like her but takes a position she did not state is this lens's finding (viewpoint). A `[NEEDS HER]` placeholder is the open finding it marks, carried under its existing key — not a new one. Authorship and support failures are necessary at any score.
-- **AI-slop detector** — craft and surface against the §3.1 preferences at `creator.voice_preferences`: manufactured fragment-aphorisms, list-drift, mechanical connectives, uniform polish, em-dash density standing in for rhythm, performed ownership, staged vulnerability, textbook exposition, announced expertise, a softened or rounded-corner treatment of a point she made sharply. Viewpoint fidelity belongs to Perell; this lens judges how it is written. A draft passage that violates an `active` lesson in `learning.lessons` is a necessary finding under whichever lens the passage offends, cited to the lesson.
+- **AI-slop detector** — craft and surface against the preferences at `creator.voice_preferences` (section `creator.voice_preferences_section`): manufactured fragment-aphorisms, list-drift, mechanical connectives, uniform polish, em-dash density standing in for rhythm, performed ownership, staged vulnerability, textbook exposition, announced expertise, a softened or rounded-corner treatment of a point she made sharply. Viewpoint fidelity belongs to Perell; this lens judges how it is written. A draft passage that violates an `active` lesson in `learning.lessons` is a necessary finding under whichever lens the passage offends, cited to the lesson.
 
 One problem, one finding: file it under the lens whose remit it most offends and cross-reference the other; the same problem seen by two lenses is not two findings, but two distinct problems in one passage are.
 
-## Scoring (TD §2)
+## Scoring
 
 | Score | Meaning |
 | --- | --- |
