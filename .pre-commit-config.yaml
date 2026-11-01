@@ -5,8 +5,11 @@ default_stages: [pre-commit]
 
 repos:
   - repo: https://github.com/lexijamesesq/dotty
-    rev: v2026.10.17
+    rev: v2026.10.29-2
     hooks:
+      - id: release-version
+        alias: studio-version
+        args: [plugin, plugins/studio, studio]
       - id: gitleaks-staged
         stages: [pre-commit]
       - id: gitleaks-commit-msg

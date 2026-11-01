@@ -1,1 +1,18 @@
-{"name":"studio","version":"0.1.0","description":"Personal brand agency skills and agents. Skills are added as each service is built and validated."}
+{
+  "name": "studio",
+  "version": "0.1.0",
+  "description": "Studio's Content Machine: discovery, research, interview, draft, critique, and learning skills that turn an author's own thinking into articles the author would publish.",
+  "author": {
+    "name": "Lexi James",
+    "url": "https://github.com/lexijamesesq"
+  },
+  "repository": "https://github.com/lexijamesesq/studio",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "content",
+    "writing",
+    "studio"
+  ],
+  "defaultEnabled": false
+}
