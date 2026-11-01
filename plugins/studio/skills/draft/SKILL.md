@@ -40,7 +40,7 @@ Read from the article folder (under `workspace.articles_root`; find it with `lis
 4. Self-check, fix before presenting:
    - Cut any claim, judgment, or characterization not in the transcript — including unanchored "most"/comparative/proportion claims — or mark it `[NEEDS HER]`.
    - Confirm: builds an argument, not a restatement; confronts the opponent's counterargument, not just warns; thesis stated once; strongest claim is the hinge; reader placed at a specific moment; no manufactured aphorism.
-5. Write `Draft-1.md`. Note which parts are her transcript vs composed prose, any `[NEEDS HER]` gaps, and the lines least certain to be her voice.
+5. Write `Draft-1.md`. Note which parts are her transcript vs composed prose, any `[NEEDS HER]` gaps, and the lines least certain to be her voice. Update `Current.md` (stage `draft`, `draft-file`, open questions, next action).
 
 ## Stop
 

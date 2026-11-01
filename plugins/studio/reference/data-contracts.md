@@ -5,9 +5,9 @@ The data the Content Machine reads and writes: structured YAML frontmatter on pe
 ## Storage map (config-keyed)
 
 - **Idea records** — one note per idea under `workspace.ideas_dir` (per-note so Bases can filter them).
-- **Run records** — `workspace.discovery_dir/<YYYY-MM-DD>.md` (field by kind, coverage, outcome).
+- **Fields and run records** — the assembled field in `workspace.discovery_dir/<YYYY-MM-DD>-<n>/` and its run record at `workspace.discovery_dir/<YYYY-MM-DD>-<n>.md` (field by kind, coverage, outcome); `<n>` counts same-day runs.
 - **Article workspaces** — `workspace.articles_root/<stable-name>/` (files in §2).
-- **Lessons store** — `workspace.lessons`.
+- **Lessons store** — `learning.lessons`.
 - **Ideas dashboard** — `workspace.ideas_dashboard`: a resurfacing-rule header + the Bases view (§5).
 
 ## 1. Idea record
@@ -49,7 +49,7 @@ updated: YYYY-MM-DD
 | `Draft-1.md` … `Draft-final.md` | drafts; `Draft-final` only on her sign | draft / her edits | critique / her |
 | `Critique-1.md` | findings: passage · problem · reader-effect · evidence (no rewrites) | critique | her |
 
-## 3. Lessons store (`Lessons.md`) — created by `/studio:learn`; discovery idea-verdicts are NOT here (they live in each idea record's `verdict`, §1)
+## 3. Lessons store (`learning.lessons`) — written by `/studio:learn`; discovery idea-verdicts are NOT here (they live in each idea record's `verdict`, §1)
 
 ```markdown
 ## Her verdicts (verbatim) — draft/editorial sign-offs and edit calls only
@@ -64,15 +64,15 @@ Her explicit corrections and confirmed lessons supersede older guidance; a provi
 
 | Phase | Reads | Writes | Gate |
 |---
-| Discovery | convictions, builds, the field, `Lessons.md` verdicts | idea records (`status/new`), run record | zero valid; no quota |
+| Discovery | convictions, builds, the field, idea-record verdicts, derived lessons (`learning.lessons`) | idea records (`status/new`), run record | zero valid; no quota |
 | Vet (her) | the handful | `verdict` + `status` | her verdict is the result |
 | Research | selected idea, sources | `Research.md` + foundation verdict | Weak ⇒ stop drafting |
 | Interview | idea, convictions, voice foundation | `Position brief.md` + `Interview.md` | stop if abstract / when enough |
 | Draft | `Interview.md`, `Position brief.md`, `Research.md`, voice config | `Draft-1.md` | thin transcript ⇒ back to interview |
 | Critique | draft, transcript, research, voice foundation | `Critique-1.md` | not a gate |
-| Her edits | `Draft-1` + `Critique-1` | `Draft-final.md`; edit-lessons → `Lessons.md` | "I'd post this" = done |
+| Her edits | `Draft-1` + `Critique-1` | `Draft-final.md`; edit-lessons → `learning.lessons` | "I'd post this" = done |
 | Publish | `Draft-final` | posted copy + URL in the workspace | her initiation only |
-| Learn | `Draft-1`↔`Draft-final` diff, her verdicts | `Lessons.md` (on her yes) | her approval each time |
+| Learn | `Draft-1`↔`Draft-final` diff; her discovery verdicts | `learning.lessons` (on her yes); idea-record `verdict` + status | her approval each time |
 
 ## 5. Bases view
 

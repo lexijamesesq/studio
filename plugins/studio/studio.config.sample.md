@@ -18,7 +18,6 @@ workspace.articles_root: "Projects/<project>/Content Machine/Workspace/Articles"
 workspace.ideas_dir: "Projects/<project>/Content Machine/Workspace/Discovery/Ideas"
 workspace.ideas_dashboard: "Projects/<project>/Content Machine/Workspace/Discovery/Ideas.md"
 workspace.discovery_dir: "Projects/<project>/Content Machine/Workspace/Discovery"
-workspace.lessons: "Projects/<project>/Content Machine/Workspace/Lessons.md"
 learning.lessons: "Projects/<project>/Content Machine/Workspace/Lessons.md"
 ---
 
@@ -42,9 +41,10 @@ key such as `creator.convictions` comes back as a literal key.
   note and the exact heading holding established style preferences.
 - `sources.config` — the tended list of public sources, by kind, with each
   source's access rules; the only place those rules live.
-- `workspace.*` — where idea records, the dashboard, run records, article
-  folders, and the lessons store live; `learning.lessons` is the same file as
-  `workspace.lessons`.
+- `workspace.*` — where idea records, the dashboard, fields and run records,
+  and article folders live.
+- `learning.lessons` — the lessons store `learn` writes and `draft` and
+  `discover` read; discovery verdicts live in the idea records, not here.
 
 Nothing personal belongs in this repository; the real `studio.config.md` lives
 in the vault.

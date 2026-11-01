@@ -21,21 +21,21 @@ allowed-tools:
 
 # /studio:learn
 
-Turn her reactions into changes later runs use. Two entry points. Write nothing to the lessons store without her explicit yes. Her words verbatim first; derived lessons marked and second. Store shape: `plugins/studio/reference/data-contracts.md` §3. Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`.
+Turn her reactions into changes later runs use. Two entry points. Write nothing to the lessons store without her explicit yes. Her words verbatim first; derived lessons marked and second. Store shape: `plugins/studio/reference/data-contracts.md` §3. Resolve `workspace.articles_root`, `workspace.ideas_dir`, and `learning.lessons` (the lessons store) from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`.
 
 ## After a signed draft
 
-1. Load `Draft-1.md` and `Draft-final.md`.
+1. Load `Draft-1.md` and `Draft-final.md` from `workspace.articles_root/<stable-name>/`.
 2. Diff them. For each substantive change, name the general but scoped lesson (tone, structure, voice, claim).
 3. Propose the candidate lessons to her, each tied to the change it came from. Ask whether to add them.
-4. On her yes, append her verbatim reaction (if given) under *Her verdicts*, and the derived lesson under *Derived lessons* — marked, with scope and authority. On no, discard. Never auto-save.
+4. On her yes, append to `learning.lessons`: her verbatim reaction (if given) under *Her verdicts*, and the derived lesson under *Derived lessons* — marked, with scope and authority. On no, discard. Never auto-save.
 5. If a proposed lesson conflicts with established guidance, surface the conflict to her and record her resolution — never override silently.
 
 ## Recording a discovery verdict
 
 1. Take her verbatim verdict on an idea (or set).
-2. Write it verbatim to the idea record's `verdict` and set its status tag per her decision — both are hers, never inferred.
-3. Append the verbatim verdict to `Lessons.md` under *Her verdicts*, scoped. A rejected idea is retained so it is not re-presented from the same material.
+2. Write it verbatim to the idea record's `verdict` in `workspace.ideas_dir` and set its status tag per her decision — both are hers, never inferred.
+3. The idea record is the verdict's only home; `discover` reads it there. A `status/rejected` record is retained so the material is not re-presented. Nothing from a discovery verdict goes to `learning.lessons`.
 
 ## Rules
 

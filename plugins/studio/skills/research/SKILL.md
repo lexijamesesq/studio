@@ -30,8 +30,8 @@ Read the chosen idea record — find it by slug in `workspace.ideas_dir` with `l
 1. State the claim's rival readings explicitly (e.g. "a management failure" vs "an AI-identity-stance effect" vs "the comp squeeze"). Start from any the idea record names.
 2. Gather public evidence for and against each reading. Follow primary sources; quote the load-bearing lines with URLs; note what each measured and its limits (N, method, whether stated).
 3. For each piece of evidence, ask whether it discriminates between the readings or is consistent with all of them. Non-diagnostic evidence supports nothing.
-4. Write `Research.md`: what the sources establish and their limits; evidence for and against each reading, each conclusion split `Evidence: … / Interpretation: …`; the strongest counter-reading at full strength; and a **Foundation Assessment: Strong / Moderate / Weak** with the reason. Save each fetched source as a note under `Sources/` with its URL.
-5. If Weak, stop — no draft; report which reading the evidence supports, or that none is carried, so she can reshape or reselect.
+4. Write `Research.md`: what the sources establish and their limits; evidence for and against each reading, each conclusion split `Evidence: … / Interpretation: …`; the strongest counter-reading at full strength; and a **Foundation Assessment: Strong / Moderate / Weak** with the reason. Save each fetched source as a note under `Sources/` with its URL. Update `Current.md` (stage `research`, next action).
+5. If Weak, stop — no draft; report which reading the evidence supports, or that none is carried, so she can reshape or reselect, and record that in `Current.md`.
 
 ## Stop
 
