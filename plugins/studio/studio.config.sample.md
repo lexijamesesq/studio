@@ -51,8 +51,9 @@ key such as `creator.convictions` comes back as a literal key.
   a file write) joins this root to it.
 - `workspace.*` (the rest) — where idea records, the dashboard, fields and run
   records, and article folders live.
-- `learning.lessons` — the lessons store `learn` writes and `draft` and
-  `discover` read; discovery verdicts live in the idea records, not here.
+- `learning.lessons` — the lessons store `learn` writes and `draft` (first
+  draft and revise), the council, and `discover` read; discovery verdicts
+  live in the idea records, not here.
 
 Nothing personal belongs in this repository; the real `studio.config.md` lives
 in the vault.

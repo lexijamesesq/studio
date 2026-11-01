@@ -4,7 +4,7 @@ Studio is a personal brand agency built as Claude Code skills and agents. This r
 
 ## Status
 
-The first service, the Content Machine, ships as seven skills in `plugins/studio/skills/`: `discover` and `assemble-field` (bring the author a handful of article candidates from her own convictions met by current public findings), `research`, `interview`, `draft`, `critique`, and `learn` (turn a chosen candidate into an article through her words). The plugin is pre-1.0; skills are proven in place and proven changes ship as releases.
+The first service, the Content Machine, ships as seven skills in `plugins/studio/skills/`: `discover` and `assemble-field` (bring the author a handful of article candidates from her own convictions met by current public findings), `research`, `interview`, `draft` (first draft and revise), `critique` (the six-perspective writers' council), and `learn` (turn a chosen candidate into an article through her words, to a council-ready draft she signs). The plugin is pre-1.0; skills are proven in place and proven changes ship as releases.
 
 ## Development
 
