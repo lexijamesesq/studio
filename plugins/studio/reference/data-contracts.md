@@ -48,14 +48,14 @@ updated: YYYY-MM-DD
 | `Sources/*` | fetched primary sources, public-safe | research | research/draft |
 | `Draft-1.md` | the first draft, frozen, with alternative hooks and closings and the writer's notes | draft | her (and learn, for the diff) |
 | `Draft-current.md` | the draft under revision; the council reviews it, revise replaces it | draft (first and revise) | critique / her |
-| `Draft-final.md` | only on her sign | her edits | learn / publish |
+| `Draft-final.md` | the draft after her edit pass; her sign ("I'd post this") is recorded in `Current.md` (stage `signed`) | her edits | learn / publish |
 | `Review.md` | the council's rounds, appended: six scores + aggregate, council-ready, findings (passage · problem · effect · evidence; necessary vs optional), each earlier finding's status (open / resolved with passage / dismissed with reason) | critique | draft (revise) / her |
 
 ## 3. Lessons store (`learning.lessons`) — written by `/studio:learn`; discovery idea-verdicts are NOT here (they live in each idea record's `verdict`, §1)
 
 ```markdown
 ## Her verdicts (verbatim) — editorial sign-offs, edit calls, rules she states, corrections
-- L<n> [<draft ref>] "<her verbatim words>" — authority: explicit — scope: <what it governs> — supersedes: <key, if a correction>
+- L<n> [<draft ref>] "<her verbatim words>" — authority: explicit — scope: <what it governs> — status: active | superseded(<key>) — supersedes: <key, if a correction>
 ## Derived lessons (marked derived; second-tier)
 - L<n> <lesson> — from <draft ref, the edit> — authority: confirmed | provisional — scope: <context it governs> — council: flagged(<key>) | missed — status: active | corrected(<date> — <her words>)
 ```
