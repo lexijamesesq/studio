@@ -1,7 +1,7 @@
 ---
 name: draft
-description: Produce the first draft of a Content Machine article from the author's interview transcript, in her voice, for her review. Use after /studio:interview, or when asked to "draft [idea]".
-argument-hint: [article folder or idea name]
+description: Produce the first draft of a Content Machine article from the author's interview transcript, in her voice — or, in revise mode, repair the current draft against the council's Review.md while preserving what works. Use after /studio:interview ("draft [idea]") or after a council round ("revise [idea]").
+argument-hint: [article folder or idea name, optionally revise]
 context: fork
 disable-model-invocation: false
 allowed-tools:
@@ -20,11 +20,11 @@ allowed-tools:
 
 # /studio:draft
 
-Produce one first draft from the interview transcript, in the author's voice, for her to react to. The transcript is the only source of substance. Do not judge whether it is good enough to publish — that is hers.
+Produce one first draft from the interview transcript, in the author's voice, for the council and then her. The transcript is the only source of substance. Do not judge whether it is good enough to publish — that is hers. With `revise` in `$ARGUMENTS`, or when `Review.md` exists and is not council-ready, run **Revise mode** instead (below).
 
 ## Inputs / outputs
 
-Read from the article folder (under `workspace.articles_root`; find it with `list_directory` by the idea's stable-name): `Position brief.md`, `Interview.md`, `Research.md` (if present). Also `creator.voice_foundation`; `creator.voice_preferences` (the note at that key, section `creator.voice_preferences_section`); `learning.lessons` (derived lessons, if any). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; a key that is absent stops the skill and is named in the report. Read nothing else: not another article folder, not the idea records, not her convictions, not a repository. Write `Draft-1.md` to the article folder. Never write personal content into the repo.
+Read from the article folder (under `workspace.articles_root`; find it with `list_directory` by the idea's stable-name): `Position brief.md`, `Interview.md`, `Research.md` (if present). Also `creator.voice_foundation`; `creator.voice_preferences` (the note at that key, section `creator.voice_preferences_section`); `learning.lessons` (every `active` lesson whose scope covers this piece applies — explicit, confirmed, and provisional alike; a corrected one does not). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; a key that is absent stops the skill and is named in the report. Read nothing else: not another article folder, not the idea records, not her convictions, not a repository. Write `Draft-1.md` and `Draft-current.md` (identical at first) to the article folder; in revise mode also read `Review.md` and `Draft-current.md`, and write only `Draft-current.md`. Never write personal content into the repo.
 
 ## Steps
 
@@ -38,7 +38,16 @@ Read from the article folder (under `workspace.articles_root`; find it with `lis
 4. Self-check, fix before presenting:
    - Cut any claim, judgment, or characterization not in the transcript — including unanchored "most"/comparative/proportion claims — or mark it `[NEEDS HER]`.
    - Confirm: builds an argument, not a restatement; confronts the opponent's counterargument, not just warns; thesis stated once; strongest claim is the hinge; reader placed at a specific moment; no manufactured aphorism.
-5. Write `Draft-1.md`. Note which parts are her transcript vs composed prose, any `[NEEDS HER]` gaps, and the lines least certain to be her voice. Update `Current.md` per `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §2 (stage `draft`, `draft-file`, open questions, next action).
+5. Write `Draft-1.md`: the draft, then an **Alternatives** section with two other hooks and two other closings (composed; the one choice she makes at a glance), then notes — which parts are her transcript vs composed prose, any `[NEEDS HER]` gaps, the lines least certain to be her voice. Copy the draft (without the alternatives and notes) to `Draft-current.md`. `Draft-1.md` is never edited again. Update `Current.md` per `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §2 (stage `draft`, `draft-file: Draft-current.md`, open questions, next action: council).
+
+## Revise mode
+
+The council diagnosed; you choose the repair. Read `Review.md`'s latest round and `Draft-current.md`.
+
+1. Take the findings marked **necessary** first, then optional ones you judge worth it. For each: repair it in the text in your own way — the council named the problem, not the fix — and preserve everything that already works; a repair that flattens her voice to satisfy a lens is not a repair.
+2. A finding you judge mistaken, or that conflicts with stronger author or source evidence (the transcript, the brief's Stated section, `Research.md`): leave the text, and record in `Current.md` under `open-questions` the finding key, "dismissed", and the evidence — the council checks it next round. Never mediate through her.
+3. A finding that needs substance she has not given (a missing scene, position, or rebuttal): do not invent it. Mark `[NEEDS HER]` in the text, set `Current.md`'s next action to `interview` with the one question, and stop after the other repairs. A missing fact → next action `research`.
+4. Write `Draft-current.md` (replacing it); never touch `Draft-1.md`. Update `Current.md` (stage `revise`, `draft-file: Draft-current.md`, next action: council). Never rerun an unchanged draft; if no finding admits a repair you can make with the material you have, say so and stop — that is a stall for the council to record, not a reason to lower the bar.
 
 ## Stop
 
@@ -48,4 +57,4 @@ Read from the article folder (under `workspace.articles_root`; find it with `lis
 
 ## Not this skill
 
-Interviewing; critiquing or scoring; judging publish-readiness; publishing; writing personal content to the repo; presenting composed prose as her view.
+Interviewing; critiquing or scoring; judging publish-readiness; publishing; writing personal content to the repo; presenting composed prose as her view; editing `Draft-1.md` after it is written; repairing by inventing what she did not say.

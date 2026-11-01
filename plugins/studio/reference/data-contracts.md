@@ -41,24 +41,26 @@ updated: YYYY-MM-DD
 
 | File | Holds | Written by | Read by |
 |---
-| `Current.md` | resume surface: `idea-ref, stage (research\|interview\|draft\|critique\|edit\|signed\|published), draft-file, open-questions, next-action` | every phase | a resuming session |
+| `Current.md` | resume surface: `idea-ref, stage (research\|interview\|draft\|critique\|revise\|edit\|signed\|published), draft-file, open-questions, next-action` | every phase | a resuming session |
 | `Position brief.md` | author source: stated (verbatim+source) · articulated-for-her (not-her-words, marked) · gaps | interview | draft |
 | `Interview.md` | her answers verbatim, segmented | interview | draft |
 | `Research.md` | evidence for/against each reading, counter-readings, Strong/Moderate/Weak verdict | research | draft (Weak ⇒ no draft) |
 | `Sources/*` | fetched primary sources, public-safe | research | research/draft |
-| `Draft-1.md` … `Draft-final.md` | drafts; `Draft-final` only on her sign | draft / her edits | critique / her |
-| `Critique-1.md` | findings: passage · problem · reader-effect · evidence (no rewrites) | critique | her |
+| `Draft-1.md` | the first draft, frozen, with alternative hooks and closings and the writer's notes | draft | her (and learn, for the diff) |
+| `Draft-current.md` | the draft under revision; the council reviews it, revise replaces it | draft (first and revise) | critique / her |
+| `Draft-final.md` | only on her sign | her edits | learn / publish |
+| `Review.md` | the council's rounds, appended: six scores + aggregate, council-ready, findings (passage · problem · effect · evidence; necessary vs optional), each earlier finding's status (open / resolved with passage / dismissed with reason) | critique | draft (revise) / her |
 
 ## 3. Lessons store (`learning.lessons`) — written by `/studio:learn`; discovery idea-verdicts are NOT here (they live in each idea record's `verdict`, §1)
 
 ```markdown
 ## Her verdicts (verbatim) — draft/editorial sign-offs and edit calls only
-- [<draft ref>] "<her verbatim words>" — authority: explicit|confirmed|provisional — scope: <what it governs>
+- [<draft ref>] "<her verbatim words>" — authority: explicit — scope: <what it governs>
 ## Derived lessons (marked derived; second-tier)
-- <lesson> — from <verdict ref> — scope: <…> — status: active | corrected(<when & why>)
+- <lesson> — from <draft ref, the edit> — authority: confirmed | provisional — scope: <context it governs> — status: active | corrected(<date> — <her words>)
 ```
 
-Her explicit corrections and confirmed lessons supersede older guidance; a provisional lesson that conflicts with established guidance returns to her rather than overriding; a contextual lesson stays scoped to its context, never applied as a universal.
+Authority: `explicit` (she stated it) and `confirmed` (derived, she said yes) supersede older guidance; `provisional` (derived from her edits, unruled) applies automatically within its scope and is marked so a correction is cheap. An identity or publishing-intent lesson, or one that conflicts with an explicit/confirmed lesson or the voice preferences, is never provisional — it returns to her. A contextual lesson stays scoped to its context, never applied as a universal. `draft`, `revise`, and the council read only `active` entries; the council raises a violated active lesson as a finding.
 
 ## 4. Per-phase handoffs (one owner; this table will drift from the skills — keep it in sync deliberately)
 
@@ -68,9 +70,10 @@ Her explicit corrections and confirmed lessons supersede older guidance; a provi
 | Vet (her) | the handful | `verdict` + `status` | her verdict is the result |
 | Research | selected idea, sources | `Research.md` + foundation verdict | Weak ⇒ stop drafting |
 | Interview | idea, convictions, voice foundation, words archive (searched, never read whole) | `Position brief.md` + `Interview.md` | stop if abstract / when enough |
-| Draft | `Interview.md`, `Position brief.md`, `Research.md`, voice config | `Draft-1.md` | thin transcript ⇒ back to interview |
-| Critique | draft, transcript, research, voice foundation | `Critique-1.md` | not a gate |
-| Her edits | `Draft-1` + `Critique-1` | `Draft-final.md`; edit-lessons → `learning.lessons` | "I'd post this" = done |
+| Draft | `Interview.md`, `Position brief.md`, `Research.md`, voice config, lessons | `Draft-1.md` + `Draft-current.md` | thin transcript ⇒ back to interview |
+| Revise | `Review.md`, `Draft-current.md`, the same author/source evidence | `Draft-current.md` | no repair possible from the material ⇒ stall, named |
+| Critique (council) | draft, transcript, brief, research, voice foundation + §3.1 preferences, lessons, prior `Review.md` | `Review.md` (round appended) | council-ready = aggregate ≥ 9 with no open substantiated finding; her verdict is the only gate |
+| Her edits | the council-ready draft + `Review.md` | `Draft-final.md`; edit-lessons → `learning.lessons` | "I'd post this" = done |
 | Publish | `Draft-final` | posted copy + URL in the workspace | her initiation only |
 | Learn | `Draft-1`↔`Draft-final` diff; her discovery verdicts | `learning.lessons` (on her yes); idea-record `verdict` + status | her approval each time |
 
