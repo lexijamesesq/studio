@@ -6,9 +6,11 @@ context: fork
 disable-model-invocation: false
 allowed-tools:
   - Read
-  - Grep
-  - Glob
   - Bash(date:*)
+  - Bash(curl:*)
+  - Bash(python3:*)
+  - Bash(mkdir:*)
+  - Bash(ls:*)
   - WebFetch
   - WebSearch
   - mcp__obsidian__read_note
@@ -23,7 +25,7 @@ Pull the window's public items into `workspace.discovery_dir/<date>-<n>/` as pla
 
 ## Inputs / outputs
 
-Read `sources.config` (feeds by kind, with access rules). Write to `workspace.discovery_dir/<YYYY-MM-DD>-<n>/`, where `<n>` is one more than the number of existing folders for that date (`list_directory`). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`.
+Read `sources.config` (feeds by kind, with access rules) and `creator.topic_profile` (the aligned range — the only definition of relevant). Write to `workspace.discovery_dir/<YYYY-MM-DD>-<n>/`, where `<n>` is one more than the number of existing folders for that date (`list_directory`). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`. Read nothing else from the vault.
 
 ## Classify by kind
 
@@ -31,10 +33,10 @@ Tag every item `finding` (a survey/study/dataset about people), `case` (a docume
 
 ## Steps
 
-1. Resolve the window (recency plus relevancy; default ~7–12 days; widen when thin).
+1. Resolve the window (recency plus relevancy against `creator.topic_profile`; default ~7–12 days; widen when thin).
 2. Load `sources.config` and honor each source's access rules (rate limits, summary/teaser-only feeds needing a page fetch, user-agent requirements, feeds without RSS, blocked paths). `sources.config` is the single source of those rules — never hardcode them here; they drift.
-3. Fetch each live feed's items in the window: title, URL, publish date, body. Paywalled posts (e.g. "This post is for paid subscribers") — keep only the present text and mark the truncation.
-4. Write one note per item at `<date>-<n>/<kind>/<slug>.md` (the vault accepts `.md` via `write_note`, not `.txt`), starting with its URL and date, then readable text (nav/boilerplate/utm stripped), with a `kind:` tag at the top. The stored text is a fetched extraction, not canonical source — quotes drawn from it are verified against the live source at traceability. Write `index.md`: every item (source, title, URL, date, char count, kind) and coverage (feeds read; dark/blocked/deferred).
+3. Fetch each live feed's items in the window verbatim — `curl` through Bash, not `WebFetch`, which summarizes: title, URL, publish date, body. Paywalled posts (e.g. "This post is for paid subscribers") — keep only the present text and mark the truncation.
+4. Write one note per item at `<date>-<n>/<kind>/<slug>.md` with a deterministic script — a file write of the fetched text, never re-emitted through the model — starting with its URL and date, then the readable text (nav/boilerplate/utm stripped), with a `kind:` tag at the top. The stored text is a fetched extraction, not canonical source — quotes drawn from it are verified against the live source at traceability. Write `index.md` with `write_note`: every item (source, title, URL, date, char count, kind) and coverage (feeds read; dark/blocked/deferred).
 5. Report counts by kind and whether the window holds enough finding/case material to be worth a discovery pass.
 
 ## Stop

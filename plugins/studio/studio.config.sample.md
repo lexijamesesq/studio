@@ -10,6 +10,7 @@ creator.convictions:
 creator.builds:
   - "~/Repos/<build repository>"
   - "<vault path to a methodology note>.md"
+creator.topic_profile: "Projects/<project>/Knowledge/<domain definition>.md"
 creator.voice_foundation: "Projects/<project>/Knowledge/Voice foundation.md"
 creator.voice_preferences: "Projects/<project>/Exports/<PRD>.md"
 creator.voice_preferences_section: "### <exact heading of the style and voice section>"
@@ -36,6 +37,9 @@ key such as `creator.convictions` comes back as a literal key.
 - `creator.builds` — the author's builds, read at purpose level for the builder
   lens: local repositories (read from disk, no network) and methodology notes
   in the vault.
+- `creator.topic_profile` — the aligned range of topics (throughline, lenses,
+  selection bar); the only definition of "relevant" `assemble-field` and
+  `discover` use.
 - `creator.voice_foundation` — the mined, source-checked voice guide.
   `creator.voice_preferences` and `creator.voice_preferences_section` — the
   note and the exact heading holding established style preferences.

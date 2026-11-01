@@ -6,9 +6,9 @@ context: fork
 disable-model-invocation: false
 allowed-tools:
   - Read
-  - Grep
-  - Glob
   - Bash(date:*)
+  - Bash(ls:*)
+  - Bash(find:*)
   - mcp__obsidian__read_note
   - mcp__obsidian__read_multiple_notes
   - mcp__obsidian__read_note_lines
@@ -26,7 +26,7 @@ Bring the author a curated handful of candidates she would recognize as hers, en
 
 ## Inputs / outputs
 
-Read: `creator.convictions` whole, in her words (never paraphrase them into rules); her builds from `creator.builds` at purpose level (local repos via `Read`/`Glob`, methodology docs via `read_note`; overviews/reference only — never commit history, config, `inst-*`, or `Ideas/`/`Research/` outputs); the assembled field in `workspace.discovery_dir/<date>-<n>/` — the newest such folder unless `$ARGUMENTS` names one (each item kind-tagged finding/case/commentary); prior verdicts and the do-not-re-present list from the idea records in `workspace.ideas_dir` (each record's verbatim `verdict`; a `status/rejected` record is a do-not-re-present); `learning.lessons` for any derived lessons. Write idea records to `workspace.ideas_dir` (schema: `plugins/studio/reference/data-contracts.md`) and a run record to `workspace.discovery_dir/<date>-<n>.md` (the same `<date>-<n>` as the field folder). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — its keys are in the note's frontmatter, read with `get_frontmatter`; enumerate the idea records in `workspace.ideas_dir` with `list_directory`.
+Read: `creator.topic_profile` (the aligned range — throughline, lenses, selection bar; the only definition of relevant); `creator.convictions` whole, in her words (never paraphrase them into rules); her builds from `creator.builds` at purpose level (local repos via `Read` and `ls`/`find`, methodology docs via `read_note`; overviews/reference only — never commit history, config, `inst-*`, or `Ideas/`/`Research/` outputs); the assembled field in `workspace.discovery_dir/<date>-<n>/` — the newest such folder unless `$ARGUMENTS` names one (each item kind-tagged finding/case/commentary); prior verdicts and the do-not-re-present list from the idea records in `workspace.ideas_dir` (each record's verbatim `verdict`; a `status/rejected` record is a do-not-re-present); `learning.lessons` for any derived lessons. Write idea records to `workspace.ideas_dir` (schema: read `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §1) and a run record to `workspace.discovery_dir/<date>-<n>.md` (the same `<date>-<n>` as the field folder). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — its keys are in the note's frontmatter, read with `get_frontmatter`; enumerate the idea records in `workspace.ideas_dir` with `list_directory`. Read nothing beyond these keys: not `Discovery Runs/`, not the recommendations list, not any article folder — the idea records are the only history you consult.
 
 ## The two modes
 
@@ -43,7 +43,7 @@ Read: `creator.convictions` whole, in her words (never paraphrase them into rule
 
 ## Steps
 
-1. Load the convictions; the prior verdicts as demonstrations from the idea records in `workspace.ideas_dir` (verbatim `verdict`; a `status/rejected` record is not re-presented from the same material — if a new finding gives one fresh stakes, say so); `learning.lessons` for any derived lessons; and, for builder mode, the builds at purpose level.
+1. Load the topic profile and the convictions; the prior verdicts as demonstrations from the idea records in `workspace.ideas_dir` (verbatim `verdict`; a `status/rejected` record is not re-presented from the same material — if a new finding gives one fresh stakes, say so); `learning.lessons` for any derived lessons; and, for builder mode, the builds at purpose level.
 2. Read the field. Provoking material is `finding`/`case` only; `commentary` is support, never the provoker. If the window holds no findings about people, return zero.
 3. Find candidates in the two modes, recency plus relevancy (not a fixed calendar window). Apply the rejection checks below to each. Drop any candidate you yourself judge weak or already-said — never pad to a count. Zero is valid; no quota; a short list beats filler.
 4. Write the idea records (`status/new`) and the run record (field by kind, coverage, what was rejected and why, and the findings examined where no reading cut against the expected one).
@@ -61,7 +61,7 @@ Read: `creator.convictions` whole, in her words (never paraphrase them into rule
 
 ## Evidence classes
 
-Flag any candidate resting on a session-authored conviction (e.g. `voice-belief-thesis.md`) "needs her confirmation." Her decks and voice-and-identity are her own words.
+Flag any candidate resting on a session-authored conviction (e.g. `voice-belief-thesis.md`) "needs her confirmation." Her decks and voice-and-identity are her own words. In the claim body keep the source's own hedges ("tends to," "preliminary," "downstream") — never harden them — and attribute a journalist's gloss to the journalist, not to the researcher.
 
 ## Not this skill
 
