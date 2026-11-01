@@ -6,8 +6,6 @@ context: fork
 disable-model-invocation: false
 allowed-tools:
   - Read
-  - Grep
-  - Glob
   - Bash(date:*)
   - mcp__obsidian__read_note
   - mcp__obsidian__read_multiple_notes
@@ -26,7 +24,7 @@ Produce one first draft from the interview transcript, in the author's voice, fo
 
 ## Inputs / outputs
 
-Read from the article folder (under `workspace.articles_root`; find it with `list_directory` by the idea's stable-name): `Position brief.md`, `Interview.md`, `Research.md` (if present). Also `creator.voice_foundation`; `creator.voice_preferences` (the note at that key, section `creator.voice_preferences_section`); `learning.lessons` (derived lessons, if any). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`. Write `Draft-1.md` to the article folder. Never write personal content into the repo.
+Read from the article folder (under `workspace.articles_root`; find it with `list_directory` by the idea's stable-name): `Position brief.md`, `Interview.md`, `Research.md` (if present). Also `creator.voice_foundation`; `creator.voice_preferences` (the note at that key, section `creator.voice_preferences_section`); `learning.lessons` (derived lessons, if any). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; a key that is absent stops the skill and is named in the report. Read nothing else: not another article folder, not the idea records, not her convictions, not a repository. Write `Draft-1.md` to the article folder. Never write personal content into the repo.
 
 ## Steps
 
@@ -40,7 +38,7 @@ Read from the article folder (under `workspace.articles_root`; find it with `lis
 4. Self-check, fix before presenting:
    - Cut any claim, judgment, or characterization not in the transcript — including unanchored "most"/comparative/proportion claims — or mark it `[NEEDS HER]`.
    - Confirm: builds an argument, not a restatement; confronts the opponent's counterargument, not just warns; thesis stated once; strongest claim is the hinge; reader placed at a specific moment; no manufactured aphorism.
-5. Write `Draft-1.md`. Note which parts are her transcript vs composed prose, any `[NEEDS HER]` gaps, and the lines least certain to be her voice. Update `Current.md` (stage `draft`, `draft-file`, open questions, next action).
+5. Write `Draft-1.md`. Note which parts are her transcript vs composed prose, any `[NEEDS HER]` gaps, and the lines least certain to be her voice. Update `Current.md` per `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §2 (stage `draft`, `draft-file`, open questions, next action).
 
 ## Stop
 

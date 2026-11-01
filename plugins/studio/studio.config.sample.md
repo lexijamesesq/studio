@@ -10,10 +10,12 @@ creator.convictions:
 creator.builds:
   - "~/Repos/<build repository>"
   - "<vault path to a methodology note>.md"
+creator.topic_profile: "Projects/<project>/Knowledge/<domain definition>.md"
 creator.voice_foundation: "Projects/<project>/Knowledge/Voice foundation.md"
 creator.voice_preferences: "Projects/<project>/Exports/<PRD>.md"
 creator.voice_preferences_section: "### <exact heading of the style and voice section>"
 sources.config: "Projects/<project>/Content Machine/Workspace/Operations/sources.md"
+workspace.vault_root: "~/<path to the vault on disk>"
 workspace.articles_root: "Projects/<project>/Content Machine/Workspace/Articles"
 workspace.ideas_dir: "Projects/<project>/Content Machine/Workspace/Discovery/Ideas"
 workspace.ideas_dashboard: "Projects/<project>/Content Machine/Workspace/Discovery/Ideas.md"
@@ -36,13 +38,19 @@ key such as `creator.convictions` comes back as a literal key.
 - `creator.builds` — the author's builds, read at purpose level for the builder
   lens: local repositories (read from disk, no network) and methodology notes
   in the vault.
+- `creator.topic_profile` — the aligned range of topics (throughline, lenses,
+  selection bar); the only definition of "relevant" `assemble-field` and
+  `discover` use.
 - `creator.voice_foundation` — the mined, source-checked voice guide.
   `creator.voice_preferences` and `creator.voice_preferences_section` — the
   note and the exact heading holding established style preferences.
 - `sources.config` — the tended list of public sources, by kind, with each
   source's access rules; the only place those rules live.
-- `workspace.*` — where idea records, the dashboard, fields and run records,
-  and article folders live.
+- `workspace.vault_root` — the vault's folder on disk (`~` allowed), the only
+  absolute path; every other key is vault-relative, and a shell step (`grep`,
+  a file write) joins this root to it.
+- `workspace.*` (the rest) — where idea records, the dashboard, fields and run
+  records, and article folders live.
 - `learning.lessons` — the lessons store `learn` writes and `draft` and
   `discover` read; discovery verdicts live in the idea records, not here.
 

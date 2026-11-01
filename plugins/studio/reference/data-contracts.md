@@ -64,10 +64,10 @@ Her explicit corrections and confirmed lessons supersede older guidance; a provi
 
 | Phase | Reads | Writes | Gate |
 |---
-| Discovery | convictions, builds, the field, idea-record verdicts, derived lessons (`learning.lessons`) | idea records (`status/new`), run record | zero valid; no quota |
+| Discovery | topic profile (`creator.topic_profile`), convictions, builds, the field, idea-record verdicts, derived lessons (`learning.lessons`) | idea records (`status/new`), run record | zero valid; no quota |
 | Vet (her) | the handful | `verdict` + `status` | her verdict is the result |
 | Research | selected idea, sources | `Research.md` + foundation verdict | Weak ⇒ stop drafting |
-| Interview | idea, convictions, voice foundation | `Position brief.md` + `Interview.md` | stop if abstract / when enough |
+| Interview | idea, convictions, voice foundation, words archive (searched, never read whole) | `Position brief.md` + `Interview.md` | stop if abstract / when enough |
 | Draft | `Interview.md`, `Position brief.md`, `Research.md`, voice config | `Draft-1.md` | thin transcript ⇒ back to interview |
 | Critique | draft, transcript, research, voice foundation | `Critique-1.md` | not a gate |
 | Her edits | `Draft-1` + `Critique-1` | `Draft-final.md`; edit-lessons → `learning.lessons` | "I'd post this" = done |

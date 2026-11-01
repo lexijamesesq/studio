@@ -6,8 +6,6 @@ context: fork
 disable-model-invocation: false
 allowed-tools:
   - Read
-  - Grep
-  - Glob
   - WebSearch
   - WebFetch
   - Bash(date:*)
@@ -23,14 +21,14 @@ Test the claim against its rivals; find what would make it false as hard as what
 
 ## Inputs / outputs
 
-Read the chosen idea record — find it by slug in `workspace.ideas_dir` with `list_directory` (claim, provoking source, any named rival readings). Write `Research.md`, and each fetched source as a note under `Sources/`, to the article folder `workspace.articles_root/<stable-name>/` (`<stable-name>` = the record's slug; create the folder if absent). Web via WebSearch/WebFetch. Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`.
+Read the chosen idea record — find it by slug in `workspace.ideas_dir` with `list_directory` (claim, provoking source, any named rival readings). Write `Research.md`, and each fetched source as a note under `Sources/`, to the article folder `workspace.articles_root/<stable-name>/` (`<stable-name>` = the record's slug; create the folder if absent). Web via WebSearch/WebFetch. Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; a key that is absent stops the skill and is named in the report. Read only the idea record: never another article folder, `Discovery Runs/`, her convictions, or a repository. For a builder-lens idea the record's receipts are the evidence of the build; research the principle's public evidence. `Current.md` fields per `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §2.
 
 ## Steps
 
 1. State the claim's rival readings explicitly (e.g. "a management failure" vs "an AI-identity-stance effect" vs "the comp squeeze"). Start from any the idea record names.
 2. Gather public evidence for and against each reading. Follow primary sources; quote the load-bearing lines with URLs; note what each measured and its limits (N, method, whether stated).
 3. For each piece of evidence, ask whether it discriminates between the readings or is consistent with all of them. Non-diagnostic evidence supports nothing.
-4. Write `Research.md`: what the sources establish and their limits; evidence for and against each reading, each conclusion split `Evidence: … / Interpretation: …`; the strongest counter-reading at full strength; and a **Foundation Assessment: Strong / Moderate / Weak** with the reason. Save each fetched source as a note under `Sources/` with its URL. Update `Current.md` (stage `research`, next action).
+4. Write `Research.md`: what the sources establish and their limits; evidence for and against each reading, each conclusion split `Evidence: … / Interpretation: …`; the strongest counter-reading at full strength; and a **Foundation Assessment: Strong / Moderate / Weak** with the reason. Save each fetched source as a note under `Sources/` with its URL. Update `Current.md` with the contract's fields (stage `research`, next action).
 5. If Weak, stop — no draft; report which reading the evidence supports, or that none is carried, so she can reshape or reselect, and record that in `Current.md`.
 
 ## Stop
