@@ -1,1 +1,20 @@
-{"name":"studio","owner":{"name":"Lexi James"},"plugins":[{"name":"studio","source":"./plugins/studio","description":"Personal brand agency skills and agents"}]}
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "studio",
+  "owner": {
+    "name": "Lexi James",
+    "url": "https://github.com/lexijamesesq"
+  },
+  "metadata": {
+    "description": "Operator-owned marketplace for Studio, a personal brand agency built as Claude Code skills."
+  },
+  "plugins": [
+    {
+      "name": "studio",
+      "source": "./plugins/studio",
+      "description": "Studio's Content Machine: discovery, research, interview, draft, critique, and learning skills that turn an author's own thinking into articles the author would publish.",
+      "license": "MIT",
+      "repository": "https://github.com/lexijamesesq/studio"
+    }
+  ]
+}

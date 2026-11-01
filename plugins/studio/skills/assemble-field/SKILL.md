@@ -1,0 +1,50 @@
+---
+name: assemble-field
+description: Assemble a discovery run's field — recent public findings about people, classified by kind — into the discovery folder as plain text for the finder to read locally. Use before /studio:discover or when asked to "pull the field."
+argument-hint: [optional window]
+context: fork
+disable-model-invocation: false
+allowed-tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash(date:*)
+  - WebFetch
+  - WebSearch
+  - mcp__obsidian__read_note
+  - mcp__obsidian__write_note
+  - mcp__obsidian__get_frontmatter
+  - mcp__obsidian__list_directory
+---
+
+# /studio:assemble-field
+
+Pull the window's public items into `workspace.discovery_dir/<date>-<n>/` as plain text, each tagged by kind, so the finder reads the field locally and never fetches. Public web only: never fetch anything private or behind auth, and never carry creator material into a query.
+
+## Inputs / outputs
+
+Read `sources.config` (feeds by kind, with access rules). Write to `workspace.discovery_dir/<YYYY-MM-DD>-<n>/`, where `<n>` is one more than the number of existing folders for that date (`list_directory`). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`.
+
+## Classify by kind
+
+Tag every item `finding` (a survey/study/dataset about people), `case` (a documented real situation or decision), or `commentary` (opinion/essay about the field). The finder's provoking material is `finding`/`case` only; `commentary` is support. The index and the report state how many provoking items the window holds; a window of mostly commentary is thin — say so, do not pad it.
+
+## Steps
+
+1. Resolve the window (recency plus relevancy; default ~7–12 days; widen when thin).
+2. Load `sources.config` and honor each source's access rules (rate limits, summary/teaser-only feeds needing a page fetch, user-agent requirements, feeds without RSS, blocked paths). `sources.config` is the single source of those rules — never hardcode them here; they drift.
+3. Fetch each live feed's items in the window: title, URL, publish date, body. Paywalled posts (e.g. "This post is for paid subscribers") — keep only the present text and mark the truncation.
+4. Write one note per item at `<date>-<n>/<kind>/<slug>.md` (the vault accepts `.md` via `write_note`, not `.txt`), starting with its URL and date, then readable text (nav/boilerplate/utm stripped), with a `kind:` tag at the top. The stored text is a fetched extraction, not canonical source — quotes drawn from it are verified against the live source at traceability. Write `index.md`: every item (source, title, URL, date, char count, kind) and coverage (feeds read; dark/blocked/deferred).
+5. Report counts by kind and whether the window holds enough finding/case material to be worth a discovery pass.
+
+## Stop
+
+- A source needs auth or carries private material → never fetch it.
+- A feed 403s or user-agent-blocks → skip; note in coverage.
+- A rate limit applies → respect it; defer, do not hammer.
+- A feed is dark or stale → skip; flag it as a retire candidate for `sources.config`.
+- The window is mostly commentary → say so; widen it; never pad.
+
+## Not this skill
+
+Judging taste or ranking (the finder's job — this tags by kind only); fetching private or authed content, or her builds (the finder reads builds locally); tending the source list autonomously; running unattended.
