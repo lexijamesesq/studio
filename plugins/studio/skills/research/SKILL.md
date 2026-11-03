@@ -9,7 +9,7 @@ allowed-tools:
   - WebSearch
   - WebFetch
   - Bash(date:*)
-  - Write
+  - Write(Projects/*/Content Machine/**)
   - Glob
 ---
 

@@ -10,7 +10,7 @@ allowed-tools:
   - Bash(ls:*)
   - WebFetch
   - WebSearch
-  - Write
+  - Write(Projects/*/Content Machine/**)
   - Glob
 ---
 

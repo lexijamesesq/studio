@@ -8,8 +8,8 @@ allowed-tools:
   - Read
   - Bash(date:*)
   - Bash(ls:*)
-  - Write
-  - Edit
+  - Write(Projects/*/Content Machine/**)
+  - Edit(Projects/*/Content Machine/**)
   - Glob
   - Grep
 ---

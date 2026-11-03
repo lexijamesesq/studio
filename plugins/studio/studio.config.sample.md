@@ -53,7 +53,11 @@ nested path.
   configuration, which is how a skill locates this note before it has read it;
   every other key is vault-relative, and `Read`, `Write`, `Glob` and shell
   steps (`grep`, a file write) join this root to it. Skills write under this
-  root only.
+  root only, and their `Write`/`Edit` grants are scoped to
+  `Projects/*/Content Machine/**` relative to the session's working directory,
+  so every workspace key must sit under that path and the session must run
+  with the vault as its working directory; a write anywhere else prompts
+  instead of proceeding.
 - `workspace.*` (the rest) — where idea records, the dashboard, fields and run
   records, and article folders live.
 - `learning.lessons` — the lessons store `learn` writes and `draft` (first
