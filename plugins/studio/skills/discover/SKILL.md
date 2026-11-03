@@ -8,15 +8,10 @@ allowed-tools:
   - Read
   - Bash(date:*)
   - Bash(ls:*)
-  - mcp__obsidian__read_note
-  - mcp__obsidian__read_multiple_notes
-  - mcp__obsidian__read_note_lines
-  - mcp__obsidian__search_notes
-  - mcp__obsidian__write_note
-  - mcp__obsidian__update_frontmatter
-  - mcp__obsidian__manage_tags
-  - mcp__obsidian__get_frontmatter
-  - mcp__obsidian__list_directory
+  - Write
+  - Edit
+  - Glob
+  - Grep
 ---
 
 # /studio:discover
@@ -25,7 +20,7 @@ Bring the author a curated handful of candidates she would recognize as hers, en
 
 ## Inputs / outputs
 
-Read: `creator.topic_profile` (the aligned range — throughline, lenses, selection bar; the only definition of relevant); `creator.convictions` whole, in her words (never paraphrase them into rules); her builds from `creator.builds` at purpose level (local repos via `Read` and `ls`, methodology docs via `read_note`; overviews/reference only — never commit history, config, `inst-*`, or `Ideas/`/`Research/` outputs); the assembled field in `workspace.discovery_dir/<date>-<n>/` — the newest such folder unless `$ARGUMENTS` names one (each item kind-tagged finding/case/commentary); prior verdicts and the do-not-re-present list from the idea records in `workspace.ideas_dir` (each record's verbatim `verdict`; a `status/rejected` record is a do-not-re-present); `learning.lessons` for any derived lessons. Write idea records to `workspace.ideas_dir` (schema: read `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §1) and a run record to `workspace.discovery_dir/<date>-<n>.md` (the same `<date>-<n>` as the field folder). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — its keys are in the note's frontmatter, read with `get_frontmatter`, and a key that is absent stops the skill and is named in the report; enumerate the idea records in `workspace.ideas_dir` with `list_directory`. Read nothing beyond these keys: not `Discovery Runs/`, not the recommendations list, not any article folder — the idea records are the only history you consult.
+Read: `creator.topic_profile` (the aligned range — throughline, lenses, selection bar; the only definition of relevant); `creator.convictions` whole, in her words (never paraphrase them into rules); her builds from `creator.builds` at purpose level (local repos via `Read` and `ls`, methodology docs via `Read`; overviews/reference only — never commit history, config, `inst-*`, or `Ideas/`/`Research/` outputs); the assembled field in `workspace.discovery_dir/<date>-<n>/` — the newest such folder unless `$ARGUMENTS` names one (each item kind-tagged finding/case/commentary); prior verdicts and the do-not-re-present list from the idea records in `workspace.ideas_dir` (each record's verbatim `verdict`; a `status/rejected` record is a do-not-re-present); `learning.lessons` for any derived lessons. Write idea records to `workspace.ideas_dir` (schema: read `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §1) and a run record to `workspace.discovery_dir/<date>-<n>.md` (the same `<date>-<n>` as the field folder). Resolve every key from the vault config at `Projects/Studio/studio.config.md` — its keys are in the note's frontmatter, read with `Read`, and a key that is absent stops the skill and is named in the report; enumerate the idea records in `workspace.ideas_dir` with `Glob`. Read nothing beyond these keys: not `Discovery Runs/`, not the recommendations list, not any article folder — the idea records are the only history you consult.
 
 ## The two modes
 

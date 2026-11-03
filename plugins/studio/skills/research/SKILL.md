@@ -9,10 +9,8 @@ allowed-tools:
   - WebSearch
   - WebFetch
   - Bash(date:*)
-  - mcp__obsidian__read_note
-  - mcp__obsidian__write_note
-  - mcp__obsidian__get_frontmatter
-  - mcp__obsidian__list_directory
+  - Write
+  - Glob
 ---
 
 # /studio:research
@@ -21,7 +19,7 @@ Test the claim against its rivals; find what would make it false as hard as what
 
 ## Inputs / outputs
 
-Read the chosen idea record — find it by slug in `workspace.ideas_dir` with `list_directory` (claim, provoking source, any named rival readings). Write `Research.md`, and each fetched source as a note under `Sources/`, to the article folder `workspace.articles_root/<stable-name>/` (`<stable-name>` = the record's slug; create the folder if absent). Web via WebSearch/WebFetch. Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; a key that is absent stops the skill and is named in the report. Read only the idea record: never another article folder, `Discovery Runs/`, her convictions, or a repository. For a builder-lens idea the record's receipts are the evidence of the build; research the principle's public evidence. `Current.md` fields per `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §2.
+Read the chosen idea record — find it by slug in `workspace.ideas_dir` with `Glob` (claim, provoking source, any named rival readings). Write `Research.md`, and each fetched source as a note under `Sources/`, to the article folder `workspace.articles_root/<stable-name>/` (`<stable-name>` = the record's slug; create the folder if absent). Web via WebSearch/WebFetch. Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `Read`; a key that is absent stops the skill and is named in the report. Read only the idea record: never another article folder, `Discovery Runs/`, her convictions, or a repository. For a builder-lens idea the record's receipts are the evidence of the build; research the principle's public evidence. `Current.md` fields per `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §2.
 
 ## Steps
 

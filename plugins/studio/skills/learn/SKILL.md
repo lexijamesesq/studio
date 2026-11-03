@@ -7,19 +7,14 @@ disable-model-invocation: false
 allowed-tools:
   - Read
   - Bash(date:*)
-  - mcp__obsidian__read_note
-  - mcp__obsidian__read_multiple_notes
-  - mcp__obsidian__write_note
-  - mcp__obsidian__patch_note
-  - mcp__obsidian__update_frontmatter
-  - mcp__obsidian__manage_tags
-  - mcp__obsidian__get_frontmatter
-  - mcp__obsidian__list_directory
+  - Write
+  - Edit
+  - Glob
 ---
 
 # /studio:learn
 
-Turn what she did to this draft into lessons the next draft and council apply, each within its scope. Her words verbatim first; derived lessons second and marked. Store shape: `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §3. Resolve `workspace.articles_root`, `workspace.ideas_dir`, and `learning.lessons` from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; an absent key stops the skill and is named to her. Read only the named article folder or idea record (and, for a correction, each article's `Current.md` under `workspace.articles_root`), the lessons store, and `creator.voice_preferences` (section `creator.voice_preferences_section`) for the conflict check — nothing else.
+Turn what she did to this draft into lessons the next draft and council apply, each within its scope. Her words verbatim first; derived lessons second and marked. Store shape: `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §3. Resolve `workspace.articles_root`, `workspace.ideas_dir`, and `learning.lessons` from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `Read`; an absent key stops the skill and is named to her. Read only the named article folder or idea record (and, for a correction, each article's `Current.md` under `workspace.articles_root`), the lessons store, and `creator.voice_preferences` (section `creator.voice_preferences_section`) for the conflict check — nothing else.
 
 ## Authority
 

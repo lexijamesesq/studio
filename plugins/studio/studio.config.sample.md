@@ -1,7 +1,7 @@
 ---
 tags:
   - type/config
-description: "Studio plugin configuration sample. Copy this note into the consumer's vault project as studio.config.md and replace every placeholder in the frontmatter with a real vault path; the skills read these keys from the frontmatter with get_frontmatter."
+description: "Studio plugin configuration sample. Copy this note into the consumer's vault project as studio.config.md and replace every placeholder in the frontmatter with a real vault path; the skills read these keys from the frontmatter with Read."
 creator.words_archive: "Projects/<project>/<Author> — Original Words and Sources.md"
 creator.convictions:
   - "Work/<leadership note A>.md"
@@ -27,7 +27,7 @@ learning.lessons: "Projects/<project>/Content Machine/Workspace/Lessons.md"
 
 Copy this note into the consumer's vault project as `studio.config.md` and
 replace every placeholder in the frontmatter with a real vault path. Keys stay
-in the frontmatter: the skills read them with `get_frontmatter`, and a dotted
+in the frontmatter: the skills read them with `Read`, and a dotted
 key such as `creator.convictions` comes back as a literal key.
 
 - `creator.words_archive` — the author's verbatim words; skills search it by
