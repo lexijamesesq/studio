@@ -7,15 +7,10 @@ allowed-tools:
   - Read
   - Bash(date:*)
   - Bash(grep:*)
-  - mcp__obsidian__read_note
-  - mcp__obsidian__read_multiple_notes
-  - mcp__obsidian__read_note_lines
-  - mcp__obsidian__search_notes
-  - mcp__obsidian__get_frontmatter
-  - mcp__obsidian__list_directory
-  - mcp__obsidian__write_note
-  - mcp__obsidian__patch_note
-  - mcp__obsidian__update_frontmatter
+  - Write(Projects/*/Content Machine/**)
+  - Edit(Projects/*/Content Machine/**)
+  - Glob
+  - Grep
 ---
 
 # /studio:interview
@@ -26,11 +21,11 @@ Two entries: **first interview** (no article folder yet, or no `Interview.md`) a
 
 ## Inputs / outputs
 
-Read: the chosen idea record; the article folder's `Current.md`, `Interview.md`, and `Position brief.md` if they exist; `creator.convictions`; `creator.voice_foundation`; `creator.words_archive` (search it by the claim's terms with `grep -n` through Bash on the disk path `workspace.vault_root` + that key, `~` expanded, then `read_note_lines` around each hit — never read it whole; if `grep` errors, stop and name the path rather than mine partially). Write `Position brief.md`, `Interview.md`, and `Current.md` (create on first write; fields per `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §2, with `form` and `lens` copied from the idea record) to `workspace.articles_root/<stable-name>/`, where `<stable-name>` is the idea record's filename slug. Resolve every key from the vault config at `Projects/Studio/studio.config.md` — keys are in frontmatter, read with `get_frontmatter`; a key that is absent stops the skill and is named to her. Read nothing else: not another article folder, not the lessons store, not a repository.
+Read: the chosen idea record; the article folder's `Current.md`, `Interview.md`, and `Position brief.md` if they exist; `creator.convictions`; `creator.voice_foundation`; `creator.words_archive` (search it by the claim's terms with `grep -n` through Bash on the disk path `workspace.vault_root` + that key, `~` expanded, then `Read` with `offset` and `limit` around each hit — never read it whole; if `grep` errors, stop and name the path rather than mine partially). Write `Position brief.md`, `Interview.md`, and `Current.md` (create on first write; fields per `${CLAUDE_PLUGIN_ROOT}/reference/data-contracts.md` §2, with `form` and `lens` copied from the idea record) to `workspace.articles_root/<stable-name>/`, where `<stable-name>` is the idea record's filename slug. Resolve every key from the vault config, read with `Read` at `{workspace_root}/Projects/Studio/studio.config.md`, where `{workspace_root}` is the vault root from the global Claude Code configuration block (`workspace.vault_root` in the config repeats it for shell steps). Keys are in its frontmatter, each a literal dotted name. Join every vault-relative key or folder named here to that root before `Read`, `Write` or `Glob`; a key that is absent stops the skill and is named to her. Write only under that root: never create or change a file anywhere else on disk. Read nothing else: not another article folder, not the lessons store, not a repository.
 
 ## Steps
 
-1. Resolve the recommendation from `$ARGUMENTS` to an idea record in `workspace.ideas_dir` (`list_directory`); if empty or ambiguous, list the candidates and ask her to point at one.
+1. Resolve the recommendation from `$ARGUMENTS` to an idea record in `workspace.ideas_dir` (`Glob`); if empty or ambiguous, list the candidates and ask her to point at one.
 2. Mine: write `Position brief.md` in three parts —
    - **Stated:** her verbatim lines bearing on the claim, each with its source. Never ask about these again.
    - **Articulated for her:** any discovery- or session-authored phrasing of the claim, marked not-yet-hers. She owns, rewrites, or rejects each.

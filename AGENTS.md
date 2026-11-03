@@ -78,7 +78,7 @@ caller's object store. Distinguish source tests from actual installed-agent proo
 Node 22+ and npm; from a fresh clone run `npm ci`. A consumer copies
 `plugins/studio/studio.config.sample.md` into its vault project as
 `studio.config.md`, keeps the keys in that note's frontmatter, and fills real
-paths; the skills read the keys with `get_frontmatter`.
+paths; the skills read the keys with `Read`.
 
 ## Configuration
 

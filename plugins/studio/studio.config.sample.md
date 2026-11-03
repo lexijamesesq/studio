@@ -1,7 +1,7 @@
 ---
 tags:
   - type/config
-description: "Studio plugin configuration sample. Copy this note into the consumer's vault project as studio.config.md and replace every placeholder in the frontmatter with a real vault path; the skills read these keys from the frontmatter with get_frontmatter."
+description: "Studio plugin configuration sample. Copy this note into the consumer's vault project as studio.config.md and replace every placeholder in the frontmatter with a real vault path; the skills read these keys from the frontmatter with Read."
 creator.words_archive: "Projects/<project>/<Author> — Original Words and Sources.md"
 creator.convictions:
   - "Work/<leadership note A>.md"
@@ -27,8 +27,10 @@ learning.lessons: "Projects/<project>/Content Machine/Workspace/Lessons.md"
 
 Copy this note into the consumer's vault project as `studio.config.md` and
 replace every placeholder in the frontmatter with a real vault path. Keys stay
-in the frontmatter: the skills read them with `get_frontmatter`, and a dotted
-key such as `creator.convictions` comes back as a literal key.
+in the frontmatter: the skills open this note with `Read` at
+`{workspace_root}/Projects/Studio/studio.config.md` and take the keys as written
+there; a dotted key such as `creator.convictions` is a literal key name, not a
+nested path.
 
 - `creator.words_archive` — the author's verbatim words; skills search it by
   terms, never read it whole.
@@ -47,8 +49,15 @@ key such as `creator.convictions` comes back as a literal key.
 - `sources.config` — the tended list of public sources, by kind, with each
   source's access rules; the only place those rules live.
 - `workspace.vault_root` — the vault's folder on disk (`~` allowed), the only
-  absolute path; every other key is vault-relative, and a shell step (`grep`,
-  a file write) joins this root to it.
+  absolute path. It must equal the `workspace_root` of the global Claude Code
+  configuration, which is how a skill locates this note before it has read it;
+  every other key is vault-relative, and `Read`, `Write`, `Glob` and shell
+  steps (`grep`, a file write) join this root to it. Skills write under this
+  root only, and their `Write`/`Edit` grants are scoped to
+  `Projects/*/Content Machine/**` relative to the session's working directory,
+  so every workspace key must sit under that path and the session must run
+  with the vault as its working directory; a write anywhere else prompts
+  instead of proceeding.
 - `workspace.*` (the rest) — where idea records, the dashboard, fields and run
   records, and article folders live.
 - `learning.lessons` — the lessons store `learn` writes and `draft` (first
